@@ -18,7 +18,7 @@ setup()
     git remote update
     echo "Generating ${BRANCH} for ${SERVICE}"
     git checkout ${BRANCH}
-    git reset origin/${BRANCH}
+    git checkout .
     git pull
 }
 
