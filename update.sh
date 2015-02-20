@@ -26,8 +26,8 @@ commit()
 {
     SERVICE=$1
     cd ~/ossc
-#    git add samples
-#    git commit -a -m "${SERVICE}: ${LOG_SUFFIX}"
+    git add samples
+    git commit -a -m "${SERVICE}: ${LOG_SUFFIX}"
 }
 
 for SERVICE in ""${PREBUILT_SERVICES}""
@@ -79,4 +79,4 @@ do
 done
 echo "Pushing"
 cd ~/ossc
-#git push -u origin master
+git push -u origin master
