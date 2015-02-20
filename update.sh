@@ -14,12 +14,9 @@ set -x
 setup()
 {
     SERVICE=$1
+    git clone https://github.com/openstack/${SERVICE}.git
     cd ~/openstack/${SERVICE}
-    git remote update
     echo "Generating ${BRANCH} for ${SERVICE}"
-    git checkout ${BRANCH}
-    git checkout .
-    git pull
 }
 
 commit()
