@@ -34,6 +34,11 @@ do
         if [ "${SERVICE}" == "glance" ]; then
             cp etc/${SERVICE}*conf.sample ~/ossc/samples/
         fi
+        # ceilometer is also a snowflake, lots of snowflakes...
+        if [ "${SERVICE}" == "ceilometer" ]; then
+            cp etc/${SERVICE}/${SERVICE}.conf ~/ossc/samples/
+        fi
+
         cd ~/ossc
         git add samples
         git commit -a -m "${SERVICE}: ${LOG_SUFFIX}"
