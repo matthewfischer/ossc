@@ -41,4 +41,4 @@ do
 done
 echo "Pushing"
 cd ~/ossc
-#git push -u origin master
+git push -u origin master
