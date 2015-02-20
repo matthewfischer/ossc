@@ -31,7 +31,7 @@ do
         echo "Last commit for ${SERVICE} is ${LOG_SUFFIX}"
         cp etc/${SERVICE}/${SERVICE}*conf.sample ~/ossc/samples/
         # glance is special for some annoying reason
-        if [ ${SERVICE} -eq "glance" ]; then
+        if [ "${SERVICE}" == "glance" ]; then
             cp etc/${SERVICE}*conf.sample ~/ossc/samples/
         fi
         cd ~/ossc
@@ -41,4 +41,4 @@ do
 done
 echo "Pushing"
 cd ~/ossc
-git push -u origin master
+#git push -u origin master
