@@ -14,8 +14,9 @@ set -x
 setup()
 {
     SERVICE=$1
+    cd ~/openstack
     git clone https://github.com/openstack/${SERVICE}.git
-    cd ~/openstack/${SERVICE}
+    cd ${SERVICE}
     echo "Generating ${BRANCH} for ${SERVICE}"
 }
 
