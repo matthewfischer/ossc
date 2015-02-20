@@ -26,9 +26,9 @@ do
         RELEASE=`basename ${BRANCH}`
         LOG_SUFFIX=`git log -n1 --oneline`
         echo "Last commit for ${SERVICE} is ${LOG_SUFFIX}"
-        cp etc/${SERVICE}/${SERVICE}*conf.sample ../ossc/samples/
+        cp etc/${SERVICE}/${SERVICE}*conf.sample ~/ossc/samples/
         cd ~/ossc
-        git add samples/
+        git add samples
         git commit -a -m "${SERVICE}: ${LOG_SUFFIX}"
     done
 done
