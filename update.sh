@@ -8,7 +8,7 @@
 # heat is broken as of Feb 19 2015
 # neutron doesn't seem to have the option at all
 
-SERVICES="nova cinder glance"
+SERVICES="nova cinder glance ceilometer"
 BRANCHES="master"
 
 set -x
