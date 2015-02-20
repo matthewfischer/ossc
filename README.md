@@ -2,14 +2,13 @@
 
 This is a simple repo that I use to generate sample configs for OpenStack Services.
 
-Right now it does nova, cinder, and glance. 
+This is mainly so that I can be lazy when looking up new/changed options.
 
 Heat is broken: https://bugs.launchpad.net/heat/+bug/1412571
 
-I cannot get nova to work on the juno branch.
 
 ## To Do:
- - neutron
  - swift?
- - designate
- - ceilometer
+
+## Issues:
+ - support branches (stable/juno)
