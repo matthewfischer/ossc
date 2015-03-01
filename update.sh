@@ -40,8 +40,10 @@ do
         cp etc/l3_agent.ini ~/ossc/samples/
         cp etc/metadata_agent.ini ~/ossc/samples/
         cp etc/dhcp_agent.ini ~/ossc/samples/
+    elif [ "${SERVICE}" == "keystone" ]; then
+        cp etc/${SERVICE}*conf.sample ~/ossc/samples/
     else
-        cp etc/${SERVICE}/${SERVICE}*conf.sample ~/ossc/samples/
+        cp etc/${SERVICE}/${SERVICE}.conf.sample ~/ossc/samples/
     fi
 
     commit ${SERVICE}
@@ -78,3 +80,4 @@ done
 echo "Pushing"
 cd ~/ossc
 git push -u origin master
+rm -rf ~/openstack
