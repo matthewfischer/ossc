@@ -15,6 +15,7 @@ setup()
 {
     SERVICE=$1
     cd ~/openstack
+    rm -rf ${SERVICE}
     git clone https://github.com/openstack/${SERVICE}.git
     cd ${SERVICE}
     echo "Generating ${BRANCH} for ${SERVICE}"
@@ -80,4 +81,3 @@ done
 echo "Pushing"
 cd ~/ossc
 git push -u origin master
-rm -rf ~/openstack
