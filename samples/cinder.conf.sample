@@ -4,123 +4,6 @@
 # Options defined in oslo.messaging
 #
 
-# Use durable queues in AMQP. (boolean value)
-# Deprecated group/name - [DEFAULT]/rabbit_durable_queues
-#amqp_durable_queues=false
-
-# Auto-delete queues in AMQP. (boolean value)
-#amqp_auto_delete=false
-
-# Size of RPC connection pool. (integer value)
-#rpc_conn_pool_size=30
-
-# Qpid broker hostname. (string value)
-#qpid_hostname=localhost
-
-# Qpid broker port. (integer value)
-#qpid_port=5672
-
-# Qpid HA cluster host:port pairs. (list value)
-#qpid_hosts=$qpid_hostname:$qpid_port
-
-# Username for Qpid connection. (string value)
-#qpid_username=
-
-# Password for Qpid connection. (string value)
-#qpid_password=
-
-# Space separated list of SASL mechanisms to use for auth.
-# (string value)
-#qpid_sasl_mechanisms=
-
-# Seconds between connection keepalive heartbeats. (integer
-# value)
-#qpid_heartbeat=60
-
-# Transport to use, either 'tcp' or 'ssl'. (string value)
-#qpid_protocol=tcp
-
-# Whether to disable the Nagle algorithm. (boolean value)
-#qpid_tcp_nodelay=true
-
-# The number of prefetched messages held by receiver. (integer
-# value)
-#qpid_receiver_capacity=1
-
-# The qpid topology version to use.  Version 1 is what was
-# originally used by impl_qpid.  Version 2 includes some
-# backwards-incompatible changes that allow broker federation
-# to work.  Users should update to version 2 when they are
-# able to take everything down, as it requires a clean break.
-# (integer value)
-#qpid_topology_version=1
-
-# SSL version to use (valid only if SSL enabled). Valid values
-# are TLSv1 and SSLv23. SSLv2, SSLv3, TLSv1_1, and TLSv1_2 may
-# be available on some distributions. (string value)
-#kombu_ssl_version=
-
-# SSL key file (valid only if SSL enabled). (string value)
-#kombu_ssl_keyfile=
-
-# SSL cert file (valid only if SSL enabled). (string value)
-#kombu_ssl_certfile=
-
-# SSL certification authority file (valid only if SSL
-# enabled). (string value)
-#kombu_ssl_ca_certs=
-
-# How long to wait before reconnecting in response to an AMQP
-# consumer cancel notification. (floating point value)
-#kombu_reconnect_delay=1.0
-
-# The RabbitMQ broker address where a single node is used.
-# (string value)
-#rabbit_host=localhost
-
-# The RabbitMQ broker port where a single node is used.
-# (integer value)
-#rabbit_port=5672
-
-# RabbitMQ HA cluster host:port pairs. (list value)
-#rabbit_hosts=$rabbit_host:$rabbit_port
-
-# Connect over SSL for RabbitMQ. (boolean value)
-#rabbit_use_ssl=false
-
-# The RabbitMQ userid. (string value)
-#rabbit_userid=guest
-
-# The RabbitMQ password. (string value)
-#rabbit_password=guest
-
-# The RabbitMQ login method. (string value)
-#rabbit_login_method=AMQPLAIN
-
-# The RabbitMQ virtual host. (string value)
-#rabbit_virtual_host=/
-
-# How frequently to retry connecting with RabbitMQ. (integer
-# value)
-#rabbit_retry_interval=1
-
-# How long to backoff for between retries when connecting to
-# RabbitMQ. (integer value)
-#rabbit_retry_backoff=2
-
-# Maximum number of RabbitMQ connection retries. Default is 0
-# (infinite retry count). (integer value)
-#rabbit_max_retries=0
-
-# Use HA queues in RabbitMQ (x-ha-policy: all). If you change
-# this option, you must wipe the RabbitMQ database. (boolean
-# value)
-#rabbit_ha_queues=false
-
-# Deprecated, use rpc_backend=kombu+memory or rpc_backend=fake
-# (boolean value)
-#fake_rabbit=false
-
 # ZeroMQ bind address. Should be a wildcard (*), an ethernet
 # interface, or IP. The "host" option should point or resolve
 # to this address. (string value)
@@ -936,6 +819,15 @@
 
 
 #
+# Options defined in cinder.openstack.common.versionutils
+#
+
+# Enables or disables fatal status of deprecations. (boolean
+# value)
+#fatal_deprecations=false
+
+
+#
 # Options defined in cinder.scheduler.driver
 #
 
@@ -1113,8 +1005,7 @@
 # Otherwise, it will fallback to single path. (boolean value)
 #enforce_multipath_for_image_xfer=false
 
-# Method used to wipe old volumes (valid options are: none,
-# zero, shred) (string value)
+# Method used to wipe old volumes (string value)
 #volume_clear=zero
 
 # Size in MiB to wipe at start of old volumes. 0 => all
@@ -1189,15 +1080,15 @@
 #driver_use_ssl=false
 
 # Float representation of the over subscription ratio when
-# thin provisioning is involved. Default ratio is 2.0, meaning
-# provisioned capacity can be twice of the total physical
-# capacity. If the ratio is 10.5, it means provisioned
-# capacity can be 10.5 times of the total physical capacity. A
-# ratio of 1.0 means provisioned capacity cannot exceed the
-# total physical capacity. A ratio lower than 1.0 will be
-# ignored and the default value will be used instead.
+# thin provisioning is involved. Default ratio is 20.0,
+# meaning provisioned capacity can be 20 times of the total
+# physical capacity. If the ratio is 10.5, it means
+# provisioned capacity can be 10.5 times of the total physical
+# capacity. A ratio of 1.0 means provisioned capacity cannot
+# exceed the total physical capacity. A ratio lower than 1.0
+# will be ignored and the default value will be used instead.
 # (floating point value)
-#max_over_subscription_ratio=2.0
+#max_over_subscription_ratio=20.0
 
 # Certain ISCSI targets have predefined target names, SCST
 # target driver uses this name. (string value)
@@ -1207,11 +1098,18 @@
 # target drivers. (string value)
 #scst_target_driver=iscsi
 
-# CHAP username to use for iSCSI Targets (string value)
-#chap_username=<None>
+# Option to enable/disable CHAP authentication for targets.
+# (boolean value)
+# Deprecated group/name - [DEFAULT]/eqlx_use_chap
+#use_chap_auth=false
 
-# CHAP password to use for iSCSI Targets (string value)
-#chap_password=<None>
+# CHAP user name. (string value)
+# Deprecated group/name - [DEFAULT]/eqlx_chap_login
+#chap_username=
+
+# Password for specified CHAP account name. (string value)
+# Deprecated group/name - [DEFAULT]/eqlx_chap_password
+#chap_password=
 
 
 #
@@ -1398,6 +1296,14 @@
 
 
 #
+# Options defined in cinder.volume.drivers.emc.xtremio
+#
+
+# XMS cluster id in multi-cluster environment (string value)
+#xtremio_cluster_name=
+
+
+#
 # Options defined in cinder.volume.drivers.eqlx
 #
 
@@ -1413,16 +1319,22 @@
 # value)
 #eqlx_cli_max_retries=5
 
-# Use CHAP authentication for targets. Defaults to "False".
+# Use CHAP authentication for targets. Note that this option
+# is deprecated in favour of "use_chap_auth" as specified in
+# cinder/volume/driver.py and will be removed in next release.
 # (boolean value)
 #eqlx_use_chap=false
 
-# Existing CHAP account name. Defaults to "admin". (string
-# value)
+# Existing CHAP account name. Note that this option is
+# deprecated in favour of "chap_username" as specified in
+# cinder/volume/driver.py and will be removed in next release.
+# (string value)
 #eqlx_chap_login=admin
 
-# Password for specified CHAP account name. Defaults to
-# "password". (string value)
+# Password for specified CHAP account name. Note that this
+# option is deprecated in favour of "chap_password" as
+# specified in cinder/volume/driver.py and will be removed in
+# the next release (string value)
 #eqlx_chap_password=password
 
 # Pool in which volumes will be created. Defaults to
@@ -1632,7 +1544,7 @@
 # "copy_on_write" specifies that copy-on-write optimization
 # strategy is used and unmodified blocks of the image file are
 # shared efficiently. (string value)
-#gpfs_images_share_mode=<None>
+#gpfs_images_share_mode=copy_on_write
 
 # Specifies an upper limit on the number of indirections
 # required to reach a specific block due to snapshots or
@@ -1656,48 +1568,6 @@
 #
 # Options defined in cinder.volume.drivers.ibm.ibmnas
 #
-
-# IP address or Hostname of NAS system. (string value)
-#nas_ip=
-
-# User name to connect to NAS system. (string value)
-#nas_login=admin
-
-# Password to connect to NAS system. (string value)
-#nas_password=
-
-# SSH port to use to connect to NAS system. (integer value)
-#nas_ssh_port=22
-
-# Filename of private key to use for SSH authentication.
-# (string value)
-#nas_private_key=
-
-# Allow network-attached storage systems to operate in a
-# secure environment where root level access is not permitted.
-# If set to False, access is as the root user and insecure. If
-# set to True, access is not as root. If set to auto, a check
-# is done to determine if this is a new installation: True is
-# used if so, otherwise False. Default is auto. (string value)
-#nas_secure_file_operations=auto
-
-# Set more secure file permissions on network-attached storage
-# volume files to restrict broad other/world access. If set to
-# False, volumes are created with open permissions. If set to
-# True, volumes are created with permissions for the cinder
-# user and group (660). If set to auto, a check is done to
-# determine if this is a new installation: True is used if so,
-# otherwise False. Default is auto. (string value)
-#nas_secure_file_permissions=auto
-
-# Path to the share to use for storing Cinder volumes. For
-# example:  "/srv/export1" for an NFS server export available
-# at 10.0.5.10:/srv/export1 . (string value)
-#nas_share_path=
-
-# Options used to mount the storage backend file system where
-# Cinder volumes are stored. (string value)
-#nas_mount_options=<None>
 
 # IBMNAS platform type to be used as backend storage; valid
 # values are - v7ku : for using IBM Storwize V7000 Unified,
@@ -1781,8 +1651,7 @@
 # value)
 #xiv_ds8k_proxy=xiv_ds8k_openstack.nova_proxy.XIVDS8KNovaProxy
 
-# Connection type to the IBM Storage Array
-# (fibre_channel|iscsi) (string value)
+# Connection type to the IBM Storage Array (string value)
 #xiv_ds8k_connection_type=iscsi
 
 # CHAP authentication mode, effective only for iscsi
@@ -1803,8 +1672,7 @@
 # value)
 #lvm_mirrors=0
 
-# Type of LVM volumes to deploy; (default or thin) (string
-# value)
+# Type of LVM volumes to deploy (string value)
 #lvm_type=default
 
 # LVM conf file to use for the LVM driver in Cinder; this
@@ -1937,13 +1805,11 @@
 #netapp_storage_family=ontap_cluster
 
 # The storage protocol to be used on the data path with the
-# storage system; valid values are iscsi, fc, or nfs. (string
-# value)
-#netapp_storage_protocol=<None>
+# storage system. (string value)
+#netapp_storage_protocol=iscsi
 
 # The transport protocol used when communicating with the
-# storage system or proxy server. Valid values are http or
-# https. (string value)
+# storage system or proxy server. (string value)
 #netapp_transport_type=http
 
 
@@ -2346,8 +2212,7 @@
 #smbfs_shares_config=/etc/cinder/smbfs_shares
 
 # Default format that will be used when creating volumes if no
-# volume format is specified. Can be set to: raw, qcow2, vhd
-# or vhdx. (string value)
+# volume format is specified. (string value)
 #smbfs_default_volume_format=qcow2
 
 # Create volumes as sparsed files which take no space rather
@@ -2580,20 +2445,18 @@
 # Project name. (string value)
 #zfssa_project=<None>
 
-# Block size: 512, 1k, 2k, 4k, 8k, 16k, 32k, 64k, 128k.
-# (string value)
+# Block size. (string value)
 #zfssa_lun_volblocksize=8k
 
 # Flag to enable sparse (thin-provisioned): True, False.
 # (boolean value)
 #zfssa_lun_sparse=false
 
-# Data compression-off, lzjb, gzip-2, gzip, gzip-9. (string
-# value)
-#zfssa_lun_compression=
+# Data compression. (string value)
+#zfssa_lun_compression=off
 
-# Synchronous write bias-latency, throughput. (string value)
-#zfssa_lun_logbias=
+# Synchronous write bias. (string value)
+#zfssa_lun_logbias=latency
 
 # iSCSI initiator group. (string value)
 #zfssa_initiator_group=
@@ -2654,8 +2517,7 @@
 # Share name. (string value)
 #zfssa_nfs_share=nfs_share
 
-# Data compression-off, lzjb, gzip-2, gzip, gzip-9. (string
-# value)
+# Data compression. (string value)
 #zfssa_nfs_share_compression=off
 
 # Synchronous write bias-latency, throughput. (string value)
@@ -2793,15 +2655,16 @@
 # value)
 #zone_driver=cinder.zonemanager.drivers.brocade.brcd_fc_zone_driver.BrcdFCZoneDriver
 
-# Zoning policy configured by user (string value)
+# Zoning policy configured by user; valid values include
+# "initiator-target" or "initiator" (string value)
 #zoning_policy=initiator-target
 
-# Comma separated list of fibre channel fabric names. This
+# Comma separated list of Fibre Channel fabric names. This
 # list of names is used to retrieve other SAN credentials for
 # connecting to each SAN fabric (string value)
 #fc_fabric_names=<None>
 
-# FC San Lookup Service (string value)
+# FC SAN Lookup Service (string value)
 #fc_san_lookup_service=cinder.zonemanager.drivers.brocade.brcd_fc_san_lookup_service.BrcdFCSanLookupService
 
 
@@ -3051,6 +2914,147 @@
 
 # Accept clients using either SSL or plain TCP (boolean value)
 #allow_insecure_clients=false
+
+
+[oslo_messaging_qpid]
+
+#
+# Options defined in oslo.messaging
+#
+
+# Use durable queues in AMQP. (boolean value)
+# Deprecated group/name - [DEFAULT]/rabbit_durable_queues
+#amqp_durable_queues=false
+
+# Auto-delete queues in AMQP. (boolean value)
+#amqp_auto_delete=false
+
+# Size of RPC connection pool. (integer value)
+#rpc_conn_pool_size=30
+
+# Qpid broker hostname. (string value)
+#qpid_hostname=localhost
+
+# Qpid broker port. (integer value)
+#qpid_port=5672
+
+# Qpid HA cluster host:port pairs. (list value)
+#qpid_hosts=$qpid_hostname:$qpid_port
+
+# Username for Qpid connection. (string value)
+#qpid_username=
+
+# Password for Qpid connection. (string value)
+#qpid_password=
+
+# Space separated list of SASL mechanisms to use for auth.
+# (string value)
+#qpid_sasl_mechanisms=
+
+# Seconds between connection keepalive heartbeats. (integer
+# value)
+#qpid_heartbeat=60
+
+# Transport to use, either 'tcp' or 'ssl'. (string value)
+#qpid_protocol=tcp
+
+# Whether to disable the Nagle algorithm. (boolean value)
+#qpid_tcp_nodelay=true
+
+# The number of prefetched messages held by receiver. (integer
+# value)
+#qpid_receiver_capacity=1
+
+# The qpid topology version to use.  Version 1 is what was
+# originally used by impl_qpid.  Version 2 includes some
+# backwards-incompatible changes that allow broker federation
+# to work.  Users should update to version 2 when they are
+# able to take everything down, as it requires a clean break.
+# (integer value)
+#qpid_topology_version=1
+
+
+[oslo_messaging_rabbit]
+
+#
+# Options defined in oslo.messaging
+#
+
+# Use durable queues in AMQP. (boolean value)
+# Deprecated group/name - [DEFAULT]/rabbit_durable_queues
+#amqp_durable_queues=false
+
+# Auto-delete queues in AMQP. (boolean value)
+#amqp_auto_delete=false
+
+# Size of RPC connection pool. (integer value)
+#rpc_conn_pool_size=30
+
+# SSL version to use (valid only if SSL enabled). Valid values
+# are TLSv1 and SSLv23. SSLv2, SSLv3, TLSv1_1, and TLSv1_2 may
+# be available on some distributions. (string value)
+#kombu_ssl_version=
+
+# SSL key file (valid only if SSL enabled). (string value)
+#kombu_ssl_keyfile=
+
+# SSL cert file (valid only if SSL enabled). (string value)
+#kombu_ssl_certfile=
+
+# SSL certification authority file (valid only if SSL
+# enabled). (string value)
+#kombu_ssl_ca_certs=
+
+# How long to wait before reconnecting in response to an AMQP
+# consumer cancel notification. (floating point value)
+#kombu_reconnect_delay=1.0
+
+# The RabbitMQ broker address where a single node is used.
+# (string value)
+#rabbit_host=localhost
+
+# The RabbitMQ broker port where a single node is used.
+# (integer value)
+#rabbit_port=5672
+
+# RabbitMQ HA cluster host:port pairs. (list value)
+#rabbit_hosts=$rabbit_host:$rabbit_port
+
+# Connect over SSL for RabbitMQ. (boolean value)
+#rabbit_use_ssl=false
+
+# The RabbitMQ userid. (string value)
+#rabbit_userid=guest
+
+# The RabbitMQ password. (string value)
+#rabbit_password=guest
+
+# The RabbitMQ login method. (string value)
+#rabbit_login_method=AMQPLAIN
+
+# The RabbitMQ virtual host. (string value)
+#rabbit_virtual_host=/
+
+# How frequently to retry connecting with RabbitMQ. (integer
+# value)
+#rabbit_retry_interval=1
+
+# How long to backoff for between retries when connecting to
+# RabbitMQ. (integer value)
+#rabbit_retry_backoff=2
+
+# Maximum number of RabbitMQ connection retries. Default is 0
+# (infinite retry count). (integer value)
+#rabbit_max_retries=0
+
+# Use HA queues in RabbitMQ (x-ha-policy: all). If you change
+# this option, you must wipe the RabbitMQ database. (boolean
+# value)
+#rabbit_ha_queues=false
+
+# Deprecated, use rpc_backend=kombu+memory or rpc_backend=fake
+# (boolean value)
+#fake_rabbit=false
 
 
 [profiler]
