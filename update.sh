@@ -14,6 +14,7 @@ set -x
 setup()
 {
     SERVICE=$1
+    mkdir ~/openstack || true
     cd ~/openstack
     rm -rf ${SERVICE}
     git clone https://github.com/openstack/${SERVICE}.git
