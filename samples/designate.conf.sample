@@ -125,6 +125,7 @@ debug = False
 #host = 0.0.0.0
 #port = 5354
 #tcp_backlog = 100
+#all_tcp = False
 
 #-----------------------
 # Agent Service
@@ -226,6 +227,13 @@ debug = False
 #idle_timeout = 3600
 #max_retries = 10
 #retry_interval = 10
+
+#-----------------------
+# Memcache Pool Manager Cache
+#-----------------------
+[pool_manager_cache:memcache]
+#memcached_servers = None
+#expiration = 3600
 
 #############################
 ## Pool Backend Configuration
