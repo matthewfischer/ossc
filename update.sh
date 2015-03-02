@@ -56,6 +56,10 @@ do
     setup ${SERVICE}
     rm -rf .venv
     tox -egenconfig
+    if [ $? -ne 0 ]; then
+        echo "tox failed for ${SERVICE}, cowardly refusing to check in the result"
+        continue
+    fi
     RELEASE=`basename ${BRANCH}`
     LOG_SUFFIX=`git log -n1 --oneline`
     echo "Last commit for ${SERVICE} is ${LOG_SUFFIX}"

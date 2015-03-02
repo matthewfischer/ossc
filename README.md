@@ -9,4 +9,4 @@ This is mainly so that I can be lazy when looking up new/changed options.
 
 ## Issues:
  - support branches (stable/juno etc)
- - 0 byte files will get checked in if the build fails
+ - nova is broken as of 2/23: https://bugs.launchpad.net/nova/+bug/1424576
