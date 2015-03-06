@@ -1191,6 +1191,8 @@
 # Options defined in cinder.volume.drivers.datera
 #
 
+# DEPRECATED: This will be removed in the Liberty release. Use
+# san_login and san_password instead. This directly sets the
 # Datera API token. (string value)
 #datera_api_token=<None>
 
