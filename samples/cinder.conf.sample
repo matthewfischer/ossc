@@ -1112,6 +1112,10 @@
 # Deprecated group/name - [DEFAULT]/eqlx_chap_password
 #chap_password=
 
+# Namespace for driver private data values to be saved in.
+# (string value)
+#driver_data_namespace=<None>
+
 
 #
 # Options defined in cinder.volume.drivers.block_device
