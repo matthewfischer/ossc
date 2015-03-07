@@ -347,6 +347,11 @@
 # The size in bytes of Swift backup objects (integer value)
 #backup_swift_object_size=52428800
 
+# The size in bytes that changes are tracked for incremental
+# backups. backup_swift_object_size has to be multiple of
+# backup_swift_block_size. (integer value)
+#backup_swift_block_size=32768
+
 # The number of retries to make for Swift operations (integer
 # value)
 #backup_swift_retry_attempts=3
