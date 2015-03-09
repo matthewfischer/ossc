@@ -1121,6 +1121,17 @@
 # (string value)
 #driver_data_namespace=<None>
 
+# String representation for an equation that will be used to
+# filter hosts. Only used when the driver filter is set to be
+# used by the Cinder scheduler. (string value)
+#filter_function=<None>
+
+# String representation for an equation that will be used to
+# determine the goodness of a host. Only used when using the
+# goodness weigher is set to be used by the Cinder scheduler.
+# (string value)
+#goodness_function=<None>
+
 
 #
 # Options defined in cinder.volume.drivers.block_device
