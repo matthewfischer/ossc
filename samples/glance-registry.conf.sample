@@ -194,6 +194,10 @@
 # value)
 #max_header_line = 16384
 
+# If False, closes the client socket connection explicitly. (boolean
+# value)
+#http_keepalive = true
+
 # The JSON file that defines policies. (string value)
 #policy_file = policy.json
 
