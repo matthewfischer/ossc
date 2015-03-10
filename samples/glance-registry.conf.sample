@@ -493,12 +493,16 @@
 # value)
 #vmware_server_password = <None>
 
-# Inventory path to a datacenter. If the vmware_server_host specified
-# is an ESX/ESXi, the vmware_datacenter_path is optional. If
-# specified, it should be "ha-datacenter". (string value)
+# DEPRECATED. Inventory path to a datacenter. If the
+# vmware_server_host specified is an ESX/ESXi, the
+# vmware_datacenter_path is optional. If specified, it should be "ha-
+# datacenter". This option is deprecated in favor of vmware_datastores
+# and will be removed in the Liberty release. (string value)
 #vmware_datacenter_path = ha-datacenter
 
-# Datastore associated with the datacenter. (string value)
+# DEPRECATED. Datastore associated with the datacenter. This option is
+# deprecated in favor of vmware_datastores and will be removed in the
+# Liberty release. (string value)
 #vmware_datastore_name = <None>
 
 # Number of times VMware ESX/VC server API must be retried upon
@@ -515,6 +519,13 @@
 
 # Allow to perform insecure SSL requests to ESX/VC. (boolean value)
 #vmware_api_insecure = false
+
+# The datastores where the images are stored inside vCenter. The
+# expected format is datacenter_path:datastore_name:weight. The weight
+# will be used unless there is not enough free space to store the
+# image. If the weights are equal, the datastore with most free space
+# is chosen. (multi valued)
+#vmware_datastores =
 
 # Info to match when looking for cinder in the service catalog. Format
 # is : separated values of the form:
