@@ -261,6 +261,19 @@
 
 
 #
+# Options defined in cinder.backup.chunkeddriver
+#
+
+# Compression algorithm (None to disable) (string value)
+#backup_compression_algorithm=zlib
+
+# Values are "chunked" or "streaming".  If "chunked", flush
+# compression buffers on every chunk; If "streaming", at the
+# end of the entire data stream for a backup. (string value)
+#backup_compression_model=chunked
+
+
+#
 # Options defined in cinder.backup.driver
 #
 
@@ -359,9 +372,6 @@
 # The backoff time in seconds between Swift retries (integer
 # value)
 #backup_swift_retry_backoff=2
-
-# Compression algorithm (None to disable) (string value)
-#backup_compression_algorithm=zlib
 
 # Enable or Disable the timer to send the periodic progress
 # notifications to Ceilometer when backing up the volume to
