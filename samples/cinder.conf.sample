@@ -267,11 +267,6 @@
 # Compression algorithm (None to disable) (string value)
 #backup_compression_algorithm=zlib
 
-# Values are "chunked" or "streaming".  If "chunked", flush
-# compression buffers on every chunk; If "streaming", at the
-# end of the entire data stream for a backup. (string value)
-#backup_compression_model=chunked
-
 
 #
 # Options defined in cinder.backup.driver
@@ -322,6 +317,42 @@
 # If True, always discard excess bytes when restoring volumes
 # i.e. pad with zeroes. (boolean value)
 #restore_discard_excess_bytes=true
+
+
+#
+# Options defined in cinder.backup.drivers.nfs
+#
+
+# The maximum size in bytes of the files used to hold backups.
+# If the volume being backed up exceeds this size, then it
+# will be backed up into multiple files. (integer value)
+#backup_file_size=1999994880
+
+# The size in bytes that changes are tracked for incremental
+# backups. backup_swift_object_size has to be multiple of
+# backup_swift_block_size. (integer value)
+#backup_sha_block_size_bytes=32768
+
+# Enable or Disable the timer to send the periodic progress
+# notifications to Ceilometer when backing up the volume to
+# the backend storage. The default value is True to enable the
+# timer. (boolean value)
+#backup_enable_progress_timer=true
+
+# Base dir containing mount point for NFS share. (string
+# value)
+#backup_mount_point_base=$state_path/backup_mount
+
+# NFS share in fqdn:path, ipv4addr:path, or "[ipv6addr]:path"
+# format. (string value)
+#backup_share=<None>
+
+# Mount options passed to the NFS client. See NFS man page for
+# details. (string value)
+#backup_mount_options=<None>
+
+# Custom container to use for backups. (string value)
+#backup_container=<None>
 
 
 #
