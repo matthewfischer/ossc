@@ -2753,8 +2753,12 @@
 # requests. (string value)
 #ca_certificates_file=<None>
 
-# Allow an instance to have multiple vNICs attached to the
-# same Neutron network. (boolean value)
+# DEPRECATED: Allow an instance to have multiple vNICs
+# attached to the same Neutron network. This option is
+# deprecated in the 2015.1 release and will be removed in the
+# 2015.2 release where the default behavior will be to always
+# allow multiple ports from the same network to be attached to
+# an instance. (boolean value)
 #allow_duplicate_networks=false
 
 
