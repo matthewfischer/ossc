@@ -103,13 +103,17 @@
 #show_image_direct_url = false
 
 # Whether to include the backend image locations in image properties.
-# Revealing storage location can be a security risk, so use this
-# setting with caution!  The overrides show_image_direct_url. (boolean
-# value)
+# For example, if using the file system store a URL of
+# "file:///path/to/image" will be returned to the user in the
+# 'direct_url' meta-data field. Revealing storage location can be a
+# security risk, so use this setting with caution!  The overrides
+# show_image_direct_url. (boolean value)
 #show_multiple_locations = false
 
 # Maximum size of image a user can upload in bytes. Defaults to
-# 1099511627776 bytes (1 TB). (integer value)
+# 1099511627776 bytes (1 TB).WARNING: this value should only be
+# increased after careful consideration and must be set to a value
+# under 8 EB (9223372036854775808). (integer value)
 #image_size_cap = 1099511627776
 
 # Set a system wide quota for every user. This value is the total
@@ -142,8 +146,9 @@
 # (integer value)
 #pydev_worker_debug_port = 5678
 
-# Key used for encrypting sensitive metadata while talking to the
-# registry or database. (string value)
+# AES key for encrypting store 'location' metadata. This includes, if
+# used, Swift or S3 credentials. Should be set to a random string of
+# length 16, 24 or 32 bytes (string value)
 #metadata_encryption_key = <None>
 
 # Digest algorithm which will be used for digital signature; the
@@ -194,8 +199,12 @@
 # value)
 #max_header_line = 16384
 
-# If False, closes the client socket connection explicitly. (boolean
-# value)
+# If False, server will return the header "Connection: close", If
+# True, server will return "Connection: Keep-Alive" in its responses.
+# In order to close the client socket connection explicitly after the
+# response is sent and read successfully by the client, you simply
+# have to set this option to False when you create a wsgi server.
+# (boolean value)
 #http_keepalive = true
 
 # The JSON file that defines policies. (string value)
