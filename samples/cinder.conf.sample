@@ -2238,7 +2238,7 @@
 #sf_account_prefix=<None>
 
 # Account name on the SolidFire Cluster to use as owner of
-# template/cache volumes (created if doesnt exist). (string
+# template/cache volumes (created if does not exist). (string
 # value)
 #sf_template_account_name=openstack-vtemplate
 
