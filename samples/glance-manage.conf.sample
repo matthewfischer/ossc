@@ -4,6 +4,17 @@
 # From glance.manage
 #
 
+# DEPRECATED. TO BE REMOVED IN THE JUNO RELEASE. Whether or not to
+# enforce that all DB tables have charset utf8. If your database
+# tables do not have charset utf8 you will need to convert before this
+# option is removed. This option is only relevant if your database
+# engine is MySQL. (boolean value)
+#db_enforce_mysql_charset = true
+
+#
+# From oslo.log
+#
+
 # Print debugging output (set logging level to DEBUG instead of
 # default WARNING level). (boolean value)
 #debug = false
@@ -52,12 +63,39 @@
 # Syslog facility to receive log lines. (string value)
 #syslog_log_facility = LOG_USER
 
-# DEPRECATED. TO BE REMOVED IN THE JUNO RELEASE. Whether or not to
-# enforce that all DB tables have charset utf8. If your database
-# tables do not have charset utf8 you will need to convert before this
-# option is removed. This option is only relevant if your database
-# engine is MySQL. (boolean value)
-#db_enforce_mysql_charset = true
+# Log output to standard error. (boolean value)
+#use_stderr = true
+
+# Format string to use for log messages with context. (string value)
+#logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s %(user_identity)s] %(instance)s%(message)s
+
+# Format string to use for log messages without context. (string
+# value)
+#logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [-] %(instance)s%(message)s
+
+# Data to append to log format when level is DEBUG. (string value)
+#logging_debug_format_suffix = %(funcName)s %(pathname)s:%(lineno)d
+
+# Prefix each line of exception output with this format. (string
+# value)
+#logging_exception_prefix = %(asctime)s.%(msecs)03d %(process)d TRACE %(name)s %(instance)s
+
+# List of logger=LEVEL pairs. (list value)
+#default_log_levels = amqp=WARN,amqplib=WARN,boto=WARN,qpid=WARN,sqlalchemy=WARN,suds=INFO,oslo.messaging=INFO,iso8601=WARN,requests.packages.urllib3.connectionpool=WARN,urllib3.connectionpool=WARN,websocket=WARN,requests.packages.urllib3.util.retry=WARN,urllib3.util.retry=WARN,keystonemiddleware=WARN,routes.middleware=WARN,stevedore=WARN
+
+# Enables or disables publication of error events. (boolean value)
+#publish_errors = false
+
+# Enables or disables fatal status of deprecations. (boolean value)
+#fatal_deprecations = false
+
+# The format for an instance that is passed with the log message.
+# (string value)
+#instance_format = "[instance: %(uuid)s] "
+
+# The format for an instance UUID that is passed with the log message.
+# (string value)
+#instance_uuid_format = "[instance: %(uuid)s] "
 
 
 [database]
