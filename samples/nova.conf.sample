@@ -1424,6 +1424,10 @@
 # value)
 #scheduler_weight_classes=nova.scheduler.weights.all_weighers
 
+# Determines if the Scheduler tracks changes to instances to
+# help with its filtering decisions. (boolean value)
+#scheduler_tracks_instance_changes=true
+
 
 #
 # Options defined in nova.scheduler.ironic_host_manager
@@ -2765,45 +2769,46 @@
 # URL for connecting to neutron (string value)
 #url=http://127.0.0.1:9696
 
-# Timeout value for connecting to neutron in seconds (integer
-# value)
-#url_timeout=30
-
-# User id for connecting to neutron in admin context (string
-# value)
+# User id for connecting to neutron in admin context.
+# DEPRECATED: specify an auth_plugin and appropriate
+# credentials instead. (string value)
 #admin_user_id=<None>
 
-# Username for connecting to neutron in admin context (string
-# value)
+# Username for connecting to neutron in admin context
+# DEPRECATED: specify an auth_plugin and appropriate
+# credentials instead. (string value)
 #admin_username=<None>
 
-# Password for connecting to neutron in admin context (string
-# value)
+# Password for connecting to neutron in admin context
+# DEPRECATED: specify an auth_plugin and appropriate
+# credentials instead. (string value)
 #admin_password=<None>
 
-# Tenant id for connecting to neutron in admin context (string
-# value)
+# Tenant id for connecting to neutron in admin context
+# DEPRECATED: specify an auth_plugin and appropriate
+# credentials instead. (string value)
 #admin_tenant_id=<None>
 
 # Tenant name for connecting to neutron in admin context. This
 # option will be ignored if neutron_admin_tenant_id is set.
 # Note that with Keystone V3 tenant names are only unique
-# within a domain. (string value)
+# within a domain. DEPRECATED: specify an auth_plugin and
+# appropriate credentials instead. (string value)
 #admin_tenant_name=<None>
 
 # Region name for connecting to neutron in admin context
 # (string value)
 #region_name=<None>
 
-# Authorization URL for connecting to neutron in admin context
-# (string value)
+# Authorization URL for connecting to neutron in admin
+# context. DEPRECATED: specify an auth_plugin and appropriate
+# credentials instead. (string value)
 #admin_auth_url=http://localhost:5000/v2.0
 
-# If set, ignore any SSL validation issues (boolean value)
-#api_insecure=false
-
 # Authorization strategy for connecting to neutron in admin
-# context (string value)
+# context. DEPRECATED: specify an auth_plugin and appropriate
+# credentials instead. If an auth_plugin is specified strategy
+# will be ignored. (string value)
 #auth_strategy=keystone
 
 # Name of Integration Bridge used by Open vSwitch (string
@@ -2813,10 +2818,6 @@
 # Number of seconds before querying neutron for extensions
 # (integer value)
 #extension_sync_interval=600
-
-# Location of CA certificates file to use for neutron client
-# requests. (string value)
-#ca_certificates_file=<None>
 
 # DEPRECATED: Allow an instance to have multiple vNICs
 # attached to the same Neutron network. This option is
