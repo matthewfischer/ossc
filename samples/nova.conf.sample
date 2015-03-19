@@ -164,11 +164,18 @@
 # value)
 #reservation_expire=86400
 
-# Count of reservations until usage is refreshed (integer
-# value)
+# Count of reservations until usage is refreshed. This
+# defaults to 0(off) to avoid additional load but it is useful
+# to turn on to help keep quota usage up to date and reduce
+# the impact of out of sync usage issues. (integer value)
 #until_refresh=0
 
-# Number of seconds between subsequent usage refreshes
+# Number of seconds between subsequent usage refreshes. This
+# defaults to 0(off) to avoid additional load but it is useful
+# to turn on to help keep quota usage up to date and reduce
+# the impact of out of sync usage issues. Note that quotas are
+# not updated on a periodic task, they will update on a new
+# reservation if max_age has passed since the last reservation
 # (integer value)
 #max_age=0
 
