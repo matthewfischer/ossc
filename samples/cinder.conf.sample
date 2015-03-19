@@ -1526,7 +1526,7 @@
 # "copy_on_write" specifies that copy-on-write optimization
 # strategy is used and unmodified blocks of the image file are
 # shared efficiently. (string value)
-#gpfs_images_share_mode=copy_on_write
+#gpfs_images_share_mode=<None>
 
 # Specifies an upper limit on the number of indirections
 # required to reach a specific block due to snapshots or
