@@ -1175,15 +1175,6 @@
 
 
 #
-# Options defined in cinder.volume.drivers.drbdmanagedrv
-#
-
-# Number of nodes that should replicate the data. (string
-# value)
-#drbdmanage_redundancy=1
-
-
-#
 # Options defined in cinder.volume.drivers.emc.emc_vmax_common
 #
 
@@ -1296,31 +1287,6 @@
 # Pool in which volumes will be created. Defaults to
 # "default". (string value)
 #eqlx_pool=default
-
-
-#
-# Options defined in cinder.volume.drivers.fujitsu.eternus_dx_common
-#
-
-# The configuration file for the Cinder SMI-S driver (string
-# value)
-#cinder_smis_config_file=/etc/cinder/cinder_fujitsu_eternus_dx.xml
-
-
-#
-# Options defined in cinder.volume.drivers.fusionio.ioControl
-#
-
-# amount of time wait for iSCSI target to come online (integer
-# value)
-#fusionio_iocontrol_targetdelay=5
-
-# number of retries for GET operations (integer value)
-#fusionio_iocontrol_retry=3
-
-# verify the array certificate on each transaction (boolean
-# value)
-#fusionio_iocontrol_verify_cert=true
 
 
 #
@@ -1454,15 +1420,6 @@
 
 # iSCSI authentication password (string value)
 #hitachi_auth_password=HBSD-CHAP-password
-
-
-#
-# Options defined in cinder.volume.drivers.huawei
-#
-
-# The configuration file for the Cinder Huawei driver (string
-# value)
-#cinder_huawei_conf_file=/etc/cinder/cinder_huawei_conf.xml
 
 
 #
@@ -1767,78 +1724,6 @@
 # The transport protocol used when communicating with the
 # storage system or proxy server. (string value)
 #netapp_transport_type=http
-
-
-#
-# Options defined in cinder.volume.drivers.nexenta.options
-#
-
-# IP address of Nexenta SA (string value)
-#nexenta_host=
-
-# HTTP port to connect to Nexenta REST API server (integer
-# value)
-#nexenta_rest_port=2000
-
-# Use http or https for REST connection (default auto) (string
-# value)
-#nexenta_rest_protocol=auto
-
-# User name to connect to Nexenta SA (string value)
-#nexenta_user=admin
-
-# Password to connect to Nexenta SA (string value)
-#nexenta_password=nexenta
-
-# Nexenta target portal port (integer value)
-#nexenta_iscsi_target_portal_port=3260
-
-# SA Pool that holds all volumes (string value)
-#nexenta_volume=cinder
-
-# IQN prefix for iSCSI targets (string value)
-#nexenta_target_prefix=iqn.1986-03.com.sun:02:cinder-
-
-# Prefix for iSCSI target groups on SA (string value)
-#nexenta_target_group_prefix=cinder/
-
-# File with the list of available nfs shares (string value)
-#nexenta_shares_config=/etc/cinder/nfs_shares
-
-# Base directory that contains NFS share mount points (string
-# value)
-#nexenta_mount_point_base=$state_path/mnt
-
-# Enables or disables the creation of volumes as sparsed files
-# that take no space. If disabled (False), volume is created
-# as a regular file, which takes a long time. (boolean value)
-#nexenta_sparsed_volumes=true
-
-# Default compression value for new ZFS folders. (string
-# value)
-#nexenta_volume_compression=on
-
-# If set True cache NexentaStor appliance volroot option
-# value. (boolean value)
-#nexenta_nms_cache_volroot=true
-
-# Enable stream compression, level 1..9. 1 - gives best speed;
-# 9 - gives best compression. (integer value)
-#nexenta_rrmgr_compression=0
-
-# TCP Buffer size in KiloBytes. (integer value)
-#nexenta_rrmgr_tcp_buf_size=4096
-
-# Number of TCP connections. (integer value)
-#nexenta_rrmgr_connections=2
-
-# Block size for volumes (default=blank means 8KB) (string
-# value)
-#nexenta_blocksize=
-
-# Enables or disables the creation of sparse volumes (boolean
-# value)
-#nexenta_sparse=false
 
 
 #
@@ -2228,21 +2113,6 @@
 
 
 #
-# Options defined in cinder.volume.drivers.storpool
-#
-
-# The StorPool template for volumes with no type. (string
-# value)
-#storpool_template=<None>
-
-# The default StorPool chain replication value.  Used when
-# creating a volume with no specified type if
-# storpool_template is not set.  Also used for calculating the
-# apparent free space reported in the stats. (integer value)
-#storpool_replication=3
-
-
-#
 # Options defined in cinder.volume.drivers.violin.v6000_common
 #
 
@@ -2341,138 +2211,6 @@
 # Number on retries to get completion status after issuing a
 # command to ISE. (integer value)
 #ise_completion_retries=30
-
-
-#
-# Options defined in cinder.volume.drivers.zadara
-#
-
-# Management IP of Zadara VPSA (string value)
-#zadara_vpsa_ip=<None>
-
-# Zadara VPSA port number (string value)
-#zadara_vpsa_port=<None>
-
-# Use SSL connection (boolean value)
-#zadara_vpsa_use_ssl=false
-
-# User name for the VPSA (string value)
-#zadara_user=<None>
-
-# Password for the VPSA (string value)
-#zadara_password=<None>
-
-# Name of VPSA storage pool for volumes (string value)
-#zadara_vpsa_poolname=<None>
-
-# Default thin provisioning policy for volumes (boolean value)
-#zadara_vol_thin=true
-
-# Default encryption policy for volumes (boolean value)
-#zadara_vol_encrypt=false
-
-# Default template for VPSA volume names (string value)
-#zadara_vol_name_template=OS_%s
-
-# Automatically detach from servers on volume delete (boolean
-# value)
-#zadara_vpsa_auto_detach_on_delete=true
-
-# Don't halt on deletion of non-existing volumes (boolean
-# value)
-#zadara_vpsa_allow_nonexistent_delete=true
-
-
-#
-# Options defined in cinder.volume.drivers.zfssa.zfssaiscsi
-#
-
-# Storage pool name. (string value)
-#zfssa_pool=<None>
-
-# Project name. (string value)
-#zfssa_project=<None>
-
-# Block size. (string value)
-#zfssa_lun_volblocksize=8k
-
-# Flag to enable sparse (thin-provisioned): True, False.
-# (boolean value)
-#zfssa_lun_sparse=false
-
-# Data compression. (string value)
-#zfssa_lun_compression=off
-
-# Synchronous write bias. (string value)
-#zfssa_lun_logbias=latency
-
-# iSCSI initiator group. (string value)
-#zfssa_initiator_group=
-
-# iSCSI initiator IQNs. (comma separated) (string value)
-#zfssa_initiator=
-
-# iSCSI initiator CHAP user. (string value)
-#zfssa_initiator_user=
-
-# iSCSI initiator CHAP password. (string value)
-#zfssa_initiator_password=
-
-# iSCSI initiators configuration. (string value)
-#zfssa_initiator_config=
-
-# iSCSI target group name. (string value)
-#zfssa_target_group=tgt-grp
-
-# iSCSI target CHAP user. (string value)
-#zfssa_target_user=
-
-# iSCSI target CHAP password. (string value)
-#zfssa_target_password=
-
-# iSCSI target portal (Data-IP:Port, w.x.y.z:3260). (string
-# value)
-#zfssa_target_portal=<None>
-
-# Network interfaces of iSCSI targets. (comma separated)
-# (string value)
-#zfssa_target_interfaces=<None>
-
-# REST connection timeout. (seconds) (integer value)
-#zfssa_rest_timeout=<None>
-
-
-#
-# Options defined in cinder.volume.drivers.zfssa.zfssanfs
-#
-
-# Data path IP address (string value)
-#zfssa_data_ip=<None>
-
-# HTTPS port number (string value)
-#zfssa_https_port=443
-
-# Options to be passed while mounting share over nfs (string
-# value)
-#zfssa_nfs_mount_options=
-
-# Storage pool name. (string value)
-#zfssa_nfs_pool=
-
-# Project name. (string value)
-#zfssa_nfs_project=NFSProject
-
-# Share name. (string value)
-#zfssa_nfs_share=nfs_share
-
-# Data compression. (string value)
-#zfssa_nfs_share_compression=off
-
-# Synchronous write bias-latency, throughput. (string value)
-#zfssa_nfs_share_logbias=latency
-
-# REST connection timeout. (seconds) (integer value)
-#zfssa_rest_timeout=<None>
 
 
 #
