@@ -35,7 +35,7 @@
 
 # Select deferred auth method, stored password or trusts. (string value)
 # Allowed values: password, trusts
-#deferred_auth_method = password
+#deferred_auth_method = trusts
 
 # Subset of trustor roles to be delegated to heat. If left unset, all roles of
 # a user will be delegated to heat when creating a stack. (list value)
