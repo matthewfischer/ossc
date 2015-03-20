@@ -1137,32 +1137,6 @@
 
 
 #
-# Options defined in cinder.volume.drivers.coraid
-#
-
-# IP address of Coraid ESM (string value)
-#coraid_esm_address=
-
-# User name to connect to Coraid ESM (string value)
-#coraid_user=admin
-
-# Name of group on Coraid ESM to which coraid_user belongs
-# (must have admin privilege) (string value)
-#coraid_group=admin
-
-# Password to connect to Coraid ESM (string value)
-#coraid_password=password
-
-# Volume Type key name to store ESM Repository Name (string
-# value)
-#coraid_repository_key=coraid_repository
-
-# ESM Repository Name to use if not specified in Volume Type
-# keys (string value)
-#coraid_default_repository=<None>
-
-
-#
 # Options defined in cinder.volume.drivers.datera
 #
 
@@ -2121,14 +2095,6 @@
 
 # Enable HTTP debugging to LeftHand (boolean value)
 #hplefthand_debug=false
-
-
-#
-# Options defined in cinder.volume.drivers.san.hp.hp_msa_common
-#
-
-# The VDisk to use for volume creation. (string value)
-#msa_vdisk=OpenStack
 
 
 #
