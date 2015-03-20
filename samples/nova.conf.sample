@@ -724,7 +724,7 @@
 # at the default rate. (integer value)
 #sync_power_state_interval=600
 
-# Number of seconds between instance info_cache self healing
+# Number of seconds between instance network information cache
 # updates (integer value)
 #heal_instance_info_cache_interval=60
 
