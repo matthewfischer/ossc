@@ -28,7 +28,7 @@
 #instance_user = ec2-user
 
 # List of directories to search for plug-ins. (list value)
-#plugin_dirs = /usr/lib64/heat,/usr/lib/heat
+#plugin_dirs = /usr/lib64/heat,/usr/lib/heat,/usr/local/lib/heat,/usr/local/lib64/heat
 
 # The directory to search for environment files. (string value)
 #environment_dir = /etc/heat/environment.d
