@@ -98,20 +98,6 @@
 # value)
 #digest_algorithm = sha1
 
-# The JSON file that defines policies. (string value)
-#policy_file = policy.json
-
-# Default rule. Enforced when a requested rule is not found. (string
-# value)
-#policy_default_rule = default
-
-# Directories where policy configuration files are stored. They can be
-# relative to any directory in the search path defined by the
-# config_dir option, or absolute paths. The file defined by
-# policy_file must exist for these directories to be searched.
-# Missing or empty directories are ignored. (multi valued)
-#policy_dirs = policy.d
-
 # The path to the sqlite file database that will be used for image
 # cache management. (string value)
 #image_cache_sqlite_db = cache.db
@@ -253,3 +239,27 @@
 # The format for an instance UUID that is passed with the log message.
 # (string value)
 #instance_uuid_format = "[instance: %(uuid)s] "
+
+
+[oslo_policy]
+
+#
+# From oslo.policy
+#
+
+# The JSON file that defines policies. (string value)
+# Deprecated group/name - [DEFAULT]/policy_file
+#policy_file = policy.json
+
+# Default rule. Enforced when a requested rule is not found. (string
+# value)
+# Deprecated group/name - [DEFAULT]/policy_default_rule
+#policy_default_rule = default
+
+# Directories where policy configuration files are stored. They can be
+# relative to any directory in the search path defined by the
+# config_dir option, or absolute paths. The file defined by
+# policy_file must exist for these directories to be searched.
+# Missing or empty directories are ignored. (multi valued)
+# Deprecated group/name - [DEFAULT]/policy_dirs
+#policy_dirs = policy.d

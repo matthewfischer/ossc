@@ -98,20 +98,6 @@
 # value)
 #digest_algorithm = sha1
 
-# The JSON file that defines policies. (string value)
-#policy_file = policy.json
-
-# Default rule. Enforced when a requested rule is not found. (string
-# value)
-#policy_default_rule = default
-
-# Directories where policy configuration files are stored. They can be
-# relative to any directory in the search path defined by the
-# config_dir option, or absolute paths. The file defined by
-# policy_file must exist for these directories to be searched.
-# Missing or empty directories are ignored. (multi valued)
-#policy_dirs = policy.d
-
 # Directory that the scrubber will use to track information about what
 # to delete. Make sure this is set in glance-api.conf and glance-
 # scrubber.conf. (string value)
@@ -398,3 +384,27 @@
 # If external locks are used, a lock path must be set. (string value)
 # Deprecated group/name - [DEFAULT]/lock_path
 #lock_path = <None>
+
+
+[oslo_policy]
+
+#
+# From oslo.policy
+#
+
+# The JSON file that defines policies. (string value)
+# Deprecated group/name - [DEFAULT]/policy_file
+#policy_file = policy.json
+
+# Default rule. Enforced when a requested rule is not found. (string
+# value)
+# Deprecated group/name - [DEFAULT]/policy_default_rule
+#policy_default_rule = default
+
+# Directories where policy configuration files are stored. They can be
+# relative to any directory in the search path defined by the
+# config_dir option, or absolute paths. The file defined by
+# policy_file must exist for these directories to be searched.
+# Missing or empty directories are ignored. (multi valued)
+# Deprecated group/name - [DEFAULT]/policy_dirs
+#policy_dirs = policy.d
