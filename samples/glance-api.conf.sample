@@ -137,7 +137,7 @@
 # Allowed values: roles, policies
 #property_protection_rule_format = roles
 
-# Modules of exceptions that are permitted to be recreatedupon
+# Modules of exceptions that are permitted to be recreated upon
 # receiving exception data from an rpc call. (list value)
 #allowed_rpc_exception_modules = openstack.common.exception,glance.common.exception,exceptions
 
