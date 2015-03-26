@@ -804,6 +804,18 @@
 # one endpoint needs to be specified. (list value)
 #allowed_auth_uris =
 
+# Optional PEM-formatted certificate chain file. (string value)
+#cert_file = <None>
+
+# Optional PEM-formatted file that contains the private key. (string value)
+#key_file = <None>
+
+# Optional CA cert file to use in SSL connections. (string value)
+#ca_file = <None>
+
+# If set, then the server's certificate will not be verified. (boolean value)
+#insecure = false
+
 
 [heat_api]
 
