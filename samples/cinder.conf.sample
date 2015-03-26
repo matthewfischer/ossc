@@ -1720,7 +1720,7 @@
 
 # The storage protocol to be used on the data path with the
 # storage system. (string value)
-#netapp_storage_protocol=iscsi
+#netapp_storage_protocol=<None>
 
 # The transport protocol used when communicating with the
 # storage system or proxy server. (string value)
