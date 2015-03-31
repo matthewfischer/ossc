@@ -172,7 +172,7 @@
 #max_nested_stack_depth = 5
 
 # Number of heat-engine processes to fork and run. (integer value)
-#num_engine_workers = 1
+#num_engine_workers = 4
 
 #
 # From heat.common.crypt
