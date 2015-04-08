@@ -1424,6 +1424,15 @@
 
 
 #
+# Options defined in cinder.volume.drivers.huawei
+#
+
+# The configuration file for the Cinder Huawei driver (string
+# value)
+#cinder_huawei_conf_file=/etc/cinder/cinder_huawei_conf.xml
+
+
+#
 # Options defined in cinder.volume.drivers.ibm.flashsystem
 #
 
@@ -2212,6 +2221,39 @@
 # Number on retries to get completion status after issuing a
 # command to ISE. (integer value)
 #ise_completion_retries=30
+
+
+#
+# Options defined in cinder.volume.drivers.zfssa.zfssanfs
+#
+
+# Data path IP address (string value)
+#zfssa_data_ip=<None>
+
+# HTTPS port number (string value)
+#zfssa_https_port=443
+
+# Options to be passed while mounting share over nfs (string
+# value)
+#zfssa_nfs_mount_options=
+
+# Storage pool name. (string value)
+#zfssa_nfs_pool=
+
+# Project name. (string value)
+#zfssa_nfs_project=NFSProject
+
+# Share name. (string value)
+#zfssa_nfs_share=nfs_share
+
+# Data compression. (string value)
+#zfssa_nfs_share_compression=off
+
+# Synchronous write bias-latency, throughput. (string value)
+#zfssa_nfs_share_logbias=latency
+
+# REST connection timeout. (seconds) (integer value)
+#zfssa_rest_timeout=<None>
 
 
 #
