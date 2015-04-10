@@ -1968,11 +1968,13 @@
 
 # Multiplier used to weigh mute children. (The value should be
 # negative.) (floating point value)
-#mute_weight_multiplier=-10.0
+#mute_weight_multiplier=-10000.0
 
-# Weight value assigned to mute children. (The value should be
-# positive.) (floating point value)
-#mute_weight_value=1000.0
+# DEPRECATED: this option has no effect anymore. Please use
+# "mute_weight_multiplier" instead. This option is deprecated
+# in the 2015.1 release and will be removed in the 2015.2
+# release. (floating point value)
+#mute_weight_value=<None>
 
 
 #
