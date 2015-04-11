@@ -608,7 +608,7 @@
 
 # The strategy to use for auth. Supports noauth, keystone, and
 # deprecated. (string value)
-#auth_strategy=noauth
+#auth_strategy=keystone
 
 # A list of backend names to use. These backend names should
 # be backed by a unique [CONFIG] group with its options (list
