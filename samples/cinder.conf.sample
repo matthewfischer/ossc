@@ -422,6 +422,10 @@
 # enable the timer. (boolean value)
 #backup_swift_enable_progress_timer=true
 
+# Location of the CA certificate file to use for swift client
+# requests. (string value)
+#backup_swift_ca_cert_file=<None>
+
 
 #
 # Options defined in cinder.backup.drivers.tsm
