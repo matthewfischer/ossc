@@ -1845,6 +1845,9 @@
 # Options defined in cinder.volume.drivers.rbd
 #
 
+# The name of ceph cluster (string value)
+#rbd_cluster_name=ceph
+
 # The RADOS pool where rbd volumes are stored (string value)
 #rbd_pool=rbd
 
