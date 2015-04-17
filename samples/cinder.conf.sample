@@ -1678,12 +1678,6 @@
 # provisioning. (string value)
 #netapp_storage_pools=<None>
 
-# This option is used to define how the controllers in the
-# E-Series storage array will work with the particular
-# operating system on the hosts that are connected to it.
-# (string value)
-#netapp_eseries_host_type=linux_dm_mp
-
 # If the percentage of available space for an NFS share has
 # dropped below the value specified by this option, the NFS
 # image cache will be cleaned. (integer value)
@@ -1734,6 +1728,18 @@
 # The storage protocol to be used on the data path with the
 # storage system. (string value)
 #netapp_storage_protocol=<None>
+
+# This option defines the type of operating system that will
+# access a LUN exported from Data ONTAP; it is assigned to the
+# LUN at the time it is created. (string value)
+#netapp_lun_ostype=<None>
+
+# This option defines the type of operating system for all
+# initiators that can access a LUN. This information is used
+# when mapping LUNs to individual hosts or groups of hosts.
+# (string value)
+# Deprecated group/name - [DEFAULT]/netapp_eseries_host_type
+#netapp_host_type=<None>
 
 # The transport protocol used when communicating with the
 # storage system or proxy server. (string value)
