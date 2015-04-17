@@ -1574,7 +1574,7 @@
 
 # Driver to use for controlling virtualization. Options
 # include: libvirt.LibvirtDriver, xenapi.XenAPIDriver,
-# fake.FakeDriver, baremetal.BareMetalDriver,
+# fake.FakeDriver, ironic.IronicDriver,
 # vmwareapi.VMwareVCDriver, hyperv.HyperVDriver (string value)
 #compute_driver=<None>
 
