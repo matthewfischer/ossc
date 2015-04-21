@@ -183,8 +183,8 @@
 # From heat.common.crypt
 #
 
-# Encryption key used for authentication info in database. Length of this key
-# must be 16, 24 or 32 (string value)
+# Key used to encrypt authentication info in the database. Length of this key
+# must be 16, 24 or 32 characters. (string value)
 #auth_encryption_key = notgood but just long enough i t
 
 #
