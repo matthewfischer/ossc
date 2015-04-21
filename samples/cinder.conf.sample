@@ -2531,7 +2531,7 @@
 #memcache_pool_maxsize=10
 
 # (Optional) Socket timeout in seconds for communicating with
-# a memcache server. (integer value)
+# a memcached server. (integer value)
 #memcache_pool_socket_timeout=3
 
 # (Optional) Number of seconds a connection to memcached is
@@ -2539,11 +2539,11 @@
 #memcache_pool_unused_timeout=60
 
 # (Optional) Number of seconds that an operation will wait to
-# get a memcache client connection from the pool. (integer
+# get a memcached client connection from the pool. (integer
 # value)
 #memcache_pool_conn_get_timeout=10
 
-# (Optional) Use the advanced (eventlet safe) memcache client
+# (Optional) Use the advanced (eventlet safe) memcached client
 # pool. The advanced pool will only work under python 2.x.
 # (boolean value)
 #memcache_use_advanced_pool=false
