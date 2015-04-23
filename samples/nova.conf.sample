@@ -625,10 +625,6 @@
 # when testing in single-host environments. (boolean value)
 #allow_resize_to_same_host=false
 
-# Allow migrate machine to the same host. Useful when testing
-# in single-host environments. (boolean value)
-#allow_migrate_to_same_host=false
-
 # Availability zone to use when user doesn't specify one
 # (string value)
 #default_schedule_zone=<None>
@@ -761,6 +757,14 @@
 # option `scheduler_tracks_instance_changes` is False,
 # changing this option will have no effect. (integer value)
 #scheduler_instance_sync_interval=120
+
+# Interval in seconds for updating compute resources. A number
+# less than 0 means to disable the task completely. Leaving
+# this at the default of 0 will cause this to run at the
+# default periodic interval. Setting it to any positive value
+# will cause it to run at approximately that number of
+# seconds. (integer value)
+#update_resources_interval=0
 
 # Action to take if a running deleted instance is detected.
 # Valid options are 'noop', 'log', 'shutdown', or 'reap'. Set
