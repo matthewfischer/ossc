@@ -3182,6 +3182,16 @@
 
 
 #
+# Options defined in nova.virt.vmwareapi.vm_util
+#
+
+# Set this value if affected by an increased network latency
+# causing repeated characters when typing in a remote console.
+# (integer value)
+#console_delay_seconds=<None>
+
+
+#
 # Options defined in nova.virt.vmwareapi.vmops
 #
 
