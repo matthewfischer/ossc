@@ -888,6 +888,11 @@
 # Options defined in cinder.volume.api
 #
 
+# Enables the Force option on upload_to_image. This enables
+# running upload_volume on in-use volumes for backends that
+# support it. (boolean value)
+#enable_force_upload=false
+
 # Cache volume availability zones in memory for the provided
 # duration in seconds (integer value)
 #az_cache_duration=3600
