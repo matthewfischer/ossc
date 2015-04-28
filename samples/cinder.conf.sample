@@ -10,7 +10,7 @@
 #rpc_zmq_bind_address=*
 
 # MatchMaker driver. (string value)
-#rpc_zmq_matchmaker=oslo_messaging._drivers.matchmaker.MatchMakerLocalhost
+#rpc_zmq_matchmaker=local
 
 # ZeroMQ receiver listening port. (integer value)
 #rpc_zmq_port=9501
@@ -43,8 +43,9 @@
 # Size of RPC thread pool. (integer value)
 #rpc_thread_pool_size=64
 
-# Driver or drivers to handle sending notifications. (multi
-# valued)
+# The Drivers(s) to handle sending notifications. Possible
+# values are messaging, messagingv2, routing,log, test, noop
+# (multi valued)
 #notification_driver=
 
 # AMQP topic used for OpenStack notifications. (list value)
@@ -2651,8 +2652,8 @@
 # Debug: dump AMQP frames to stdout (boolean value)
 #trace=false
 
-# CA certificate PEM file for verifing server certificate
-# (string value)
+# CA certificate PEM file to verify server certificate (string
+# value)
 #ssl_ca_file=
 
 # Identifying certificate PEM file to present to clients
@@ -2678,6 +2679,7 @@
 #
 
 # Use durable queues in AMQP. (boolean value)
+# Deprecated group/name - [DEFAULT]/amqp_durable_queues
 # Deprecated group/name - [DEFAULT]/rabbit_durable_queues
 #amqp_durable_queues=false
 
@@ -2736,6 +2738,7 @@
 #
 
 # Use durable queues in AMQP. (boolean value)
+# Deprecated group/name - [DEFAULT]/amqp_durable_queues
 # Deprecated group/name - [DEFAULT]/rabbit_durable_queues
 #amqp_durable_queues=false
 
