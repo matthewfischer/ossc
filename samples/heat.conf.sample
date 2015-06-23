@@ -15,7 +15,7 @@
 
 # Name of the engine node. This can be an opaque identifier. It is not
 # necessarily a hostname, FQDN, or IP address. (string value)
-#host = cf3k
+#host = mfisch-ossc
 
 #
 # From heat.common.config
@@ -41,7 +41,8 @@
 # a user will be delegated to heat when creating a stack. (list value)
 #trusts_delegated_roles =
 
-# Maximum resources allowed per top-level stack. (integer value)
+# Maximum resources allowed per top-level stack. -1 stands for unlimited.
+# (integer value)
 #max_resources_per_stack = 1000
 
 # Maximum number of stacks any one tenant may have active at one time. (integer
@@ -74,7 +75,7 @@
 #engine_life_check_timeout = 2
 
 # Enable the legacy OS::Heat::CWLiteAlarm resource. (boolean value)
-#enable_cloud_watch_lite = true
+#enable_cloud_watch_lite = false
 
 # Enable the preview Stack Abandon feature. (boolean value)
 #enable_stack_abandon = false
@@ -125,6 +126,10 @@
 # heat_resource_name will be set to the resource's name. (boolean value)
 #stack_scheduler_hints = false
 
+# Encrypt template parameters that were marked as hidden and also all the
+# resource properties before storing them in database. (boolean value)
+#encrypt_parameters_and_properties = false
+
 #
 # From heat.common.config
 #
@@ -136,7 +141,7 @@
 #heat_metadata_server_url =
 
 # URL of the Heat waitcondition server. (string value)
-#heat_waitcondition_server_url =
+#heat_waitcondition_server_url = <None>
 
 # URL of the Heat CloudWatch server. (string value)
 #heat_watch_server_url =
@@ -177,7 +182,7 @@
 #max_nested_stack_depth = 5
 
 # Number of heat-engine processes to fork and run. (integer value)
-#num_engine_workers = 4
+#num_engine_workers = 2
 
 #
 # From heat.common.crypt
@@ -219,43 +224,12 @@
 # Default publisher_id for outgoing notifications. (string value)
 #default_publisher_id = <None>
 
-# List of drivers to send notifications (DEPRECATED). (multi valued)
-#list_notifier_drivers =
-
 #
 # From heat.engine.resources
 #
 
 # Custom template for the built-in loadbalancer nested stack. (string value)
 #loadbalancer_template = <None>
-
-#
-# From heat.openstack.common.eventlet_backdoor
-#
-
-# Enable eventlet backdoor.  Acceptable values are 0, <port>, and
-# <start>:<end>, where 0 results in listening on a random tcp port number;
-# <port> results in listening on the specified port number (and not enabling
-# backdoor if that port is in use); and <start>:<end> results in listening on
-# the smallest unused port number within the specified range of port numbers.
-# The chosen port is displayed in the service's log file. (string value)
-#backdoor_port = <None>
-
-#
-# From heat.openstack.common.policy
-#
-
-# The JSON file that defines policies. (string value)
-#policy_file = policy.json
-
-# Default rule. Enforced when a requested rule is not found. (string value)
-#policy_default_rule = default
-
-# Directories where policy configuration files are stored. They can be relative
-# to any directory in the search path defined by the config_dir option, or
-# absolute paths. The file defined by policy_file must exist for these
-# directories to be searched. (multi valued)
-#policy_dirs = policy.d
 
 #
 # From oslo.log
@@ -295,14 +269,16 @@
 # Deprecated group/name - [DEFAULT]/logdir
 #log_dir = <None>
 
-# Use syslog for logging. Existing syslog format is DEPRECATED during I, and
-# will change in J to honor RFC5424. (boolean value)
+# Use syslog for logging. Existing syslog format is DEPRECATED and will be
+# changed later to honor RFC5424. (boolean value)
 #use_syslog = false
 
 # (Optional) Enables or disables syslog rfc5424 format for logging. If enabled,
 # prefixes the MSG part of the syslog message with APP-NAME (RFC5424). The
-# format without the APP-NAME is deprecated in K, and will be removed in L,
+# format without the APP-NAME is deprecated in K, and will be removed in M,
 # along with this option. (boolean value)
+# This option is deprecated for removal.
+# Its value may be silently ignored in the future.
 #use_syslog_rfc_format = true
 
 # Syslog facility to receive log lines. (string value)
@@ -321,7 +297,7 @@
 #logging_debug_format_suffix = %(funcName)s %(pathname)s:%(lineno)d
 
 # Prefix each line of exception output with this format. (string value)
-#logging_exception_prefix = %(asctime)s.%(msecs)03d %(process)d TRACE %(name)s %(instance)s
+#logging_exception_prefix = %(asctime)s.%(msecs)03d %(process)d ERROR %(name)s %(instance)s
 
 # List of logger=LEVEL pairs. (list value)
 #default_log_levels = amqp=WARN,amqplib=WARN,boto=WARN,qpid=WARN,sqlalchemy=WARN,suds=INFO,oslo.messaging=INFO,iso8601=WARN,requests.packages.urllib3.connectionpool=WARN,urllib3.connectionpool=WARN,websocket=WARN,requests.packages.urllib3.util.retry=WARN,urllib3.util.retry=WARN,keystonemiddleware=WARN,routes.middleware=WARN,stevedore=WARN
@@ -340,9 +316,16 @@
 # value)
 #instance_uuid_format = "[instance: %(uuid)s] "
 
+# Enables or disables fatal status of deprecations. (boolean value)
+#fatal_deprecations = false
+
 #
 # From oslo.messaging
 #
+
+# Size of RPC connection pool. (integer value)
+# Deprecated group/name - [DEFAULT]/rpc_conn_pool_size
+#rpc_conn_pool_size = 30
 
 # ZeroMQ bind address. Should be a wildcard (*), an ethernet interface, or IP.
 # The "host" option should point or resolve to this address. (string value)
@@ -382,7 +365,7 @@
 #rpc_thread_pool_size = 64
 
 # The Drivers(s) to handle sending notifications. Possible values are
-# messaging, messagingv2, routing,log, test, noop (multi valued)
+# messaging, messagingv2, routing, log, test, noop (multi valued)
 #notification_driver =
 
 # AMQP topic used for OpenStack notifications. (list value)
@@ -824,6 +807,21 @@
 #insecure = false
 
 
+[eventlet_opts]
+
+#
+# From heat.common.wsgi
+#
+
+# If False, closes the client socket connection explicitly. (boolean value)
+#wsgi_keep_alive = true
+
+# Timeout for client connections' socket operations. If an incoming connection
+# is idle for this number of seconds it will be closed. A value of '0' means
+# wait forever. (integer value)
+#client_socket_timeout = 900
+
+
 [heat_api]
 
 #
@@ -1188,9 +1186,15 @@
 # Deprecated group/name - [DEFAULT]/amqp_auto_delete
 #amqp_auto_delete = false
 
-# Size of RPC connection pool. (integer value)
-# Deprecated group/name - [DEFAULT]/rpc_conn_pool_size
-#rpc_conn_pool_size = 30
+# Send a single AMQP reply to call message. The current behaviour since oslo-
+# incubator is to send two AMQP replies - first one with the payload, a second
+# one to ensure the other have finish to send the payload. We are going to
+# remove it in the N release, but we must keep backward compatible at the same
+# time. This option provides such compatibility - it defaults to False in
+# Liberty and can be turned on for early adopters with a new installations or
+# for testing. Please note, that this option will be removed in M release.
+# (boolean value)
+#send_single_reply = false
 
 # Qpid broker hostname. (string value)
 # Deprecated group/name - [DEFAULT]/qpid_hostname
@@ -1255,9 +1259,15 @@
 # Deprecated group/name - [DEFAULT]/amqp_auto_delete
 #amqp_auto_delete = false
 
-# Size of RPC connection pool. (integer value)
-# Deprecated group/name - [DEFAULT]/rpc_conn_pool_size
-#rpc_conn_pool_size = 30
+# Send a single AMQP reply to call message. The current behaviour since oslo-
+# incubator is to send two AMQP replies - first one with the payload, a second
+# one to ensure the other have finish to send the payload. We are going to
+# remove it in the N release, but we must keep backward compatible at the same
+# time. This option provides such compatibility - it defaults to False in
+# Liberty and can be turned on for early adopters with a new installations or
+# for testing. Please note, that this option will be removed in M release.
+# (boolean value)
+#send_single_reply = false
 
 # SSL version to use (valid only if SSL enabled). Valid values are TLSv1 and
 # SSLv23. SSLv2, SSLv3, TLSv1_1, and TLSv1_2 may be available on some
@@ -1281,6 +1291,10 @@
 # notification. (floating point value)
 # Deprecated group/name - [DEFAULT]/kombu_reconnect_delay
 #kombu_reconnect_delay = 1.0
+
+# How long to wait before considering a reconnect attempt to have failed. This
+# value should not be longer than rpc_response_timeout. (integer value)
+#kombu_reconnect_timeout = 60
 
 # The RabbitMQ broker address where a single node is used. (string value)
 # Deprecated group/name - [DEFAULT]/rabbit_host
@@ -1333,8 +1347,9 @@
 #rabbit_ha_queues = false
 
 # Number of seconds after which the Rabbit broker is considered down if
-# heartbeat's keep-alive fails (0 disable the heartbeat). (integer value)
-#heartbeat_timeout_threshold = 60
+# heartbeat's keep-alive fails (0 disable the heartbeat). EXPERIMENTAL (integer
+# value)
+#heartbeat_timeout_threshold = 0
 
 # How often times during the heartbeat_timeout_threshold we check the
 # heartbeat. (integer value)
@@ -1343,6 +1358,31 @@
 # Deprecated, use rpc_backend=kombu+memory or rpc_backend=fake (boolean value)
 # Deprecated group/name - [DEFAULT]/fake_rabbit
 #fake_rabbit = false
+
+
+[oslo_policy]
+
+#
+# From oslo.policy
+#
+
+# The JSON file that defines policies. (string value)
+# Deprecated group/name - [DEFAULT]/policy_file
+#policy_file = policy.json
+
+# Default rule. Enforced when a requested rule is not found. (string value)
+# Deprecated group/name - [DEFAULT]/policy_default_rule
+#policy_default_rule = default
+
+# Directories where policy configuration files are stored. They can be relative
+# to any directory in the search path defined by the config_dir option, or
+# absolute paths. The file defined by policy_file must exist for these
+# directories to be searched.  Missing or empty directories are ignored. (multi
+# valued)
+# Deprecated group/name - [DEFAULT]/policy_dirs
+# This option is deprecated for removal.
+# Its value may be silently ignored in the future.
+#policy_dirs = policy.d
 
 
 [paste_deploy]
