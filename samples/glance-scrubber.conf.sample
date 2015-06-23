@@ -70,6 +70,9 @@
 # Deploy the v2 OpenStack Images API. (boolean value)
 #enable_v2_api = true
 
+# Deploy the v3 OpenStack Objects API. (boolean value)
+#enable_v3_api = true
+
 # Deploy the v1 OpenStack Registry API. (boolean value)
 #enable_v1_registry = true
 
@@ -107,16 +110,22 @@
 # (integer value)
 #scrub_time = 0
 
-# A boolean that determines if the scrubber should clean up the files
-# it uses for taking data. Only one server in your deployment should
-# be designated the cleanup host. (boolean value)
+# DEPRECATED. TO BE REMOVED IN THE LIBERTY RELEASE. A boolean that
+# determines if the scrubber should clean up the files it uses for
+# taking data. Only one server in your deployment should be designated
+# the cleanup host. (boolean value)
+# This option is deprecated for removal.
+# Its value may be silently ignored in the future.
 #cleanup_scrubber = false
 
 # Turn on/off delayed delete. (boolean value)
 #delayed_delete = false
 
-# Items must have a modified time that is older than this value in
-# order to be candidates for cleanup. (integer value)
+# DEPRECATED. TO BE REMOVED IN THE LIBERTY RELEASE. Items must have a
+# modified time that is older than this value in order to be
+# candidates for cleanup. (integer value)
+# This option is deprecated for removal.
+# Its value may be silently ignored in the future.
 #cleanup_scrubber_time = 86400
 
 # Loop time between checking for new items to schedule for delete.
@@ -130,7 +139,10 @@
 #daemon = false
 
 # Whether to pass through the user token when making requests to the
-# registry. (boolean value)
+# registry. To prevent failures with token expiration during big files
+# upload, it is recommended to set this parameter to False.If
+# "use_user_token" is not in effect, then admin credentials can be
+# specified. (boolean value)
 #use_user_token = true
 
 # The administrators user name. If "use_user_token" is not in effect,
@@ -205,15 +217,17 @@
 # Deprecated group/name - [DEFAULT]/logdir
 #log_dir = <None>
 
-# Use syslog for logging. Existing syslog format is DEPRECATED during
-# I, and will change in J to honor RFC5424. (boolean value)
+# Use syslog for logging. Existing syslog format is DEPRECATED and
+# will be changed later to honor RFC5424. (boolean value)
 #use_syslog = false
 
 # (Optional) Enables or disables syslog rfc5424 format for logging. If
 # enabled, prefixes the MSG part of the syslog message with APP-NAME
-# (RFC5424). The format without the APP-NAME is deprecated in I, and
-# will be removed in J. (boolean value)
-#use_syslog_rfc_format = false
+# (RFC5424). The format without the APP-NAME is deprecated in K, and
+# will be removed in M, along with this option. (boolean value)
+# This option is deprecated for removal.
+# Its value may be silently ignored in the future.
+#use_syslog_rfc_format = true
 
 # Syslog facility to receive log lines. (string value)
 #syslog_log_facility = LOG_USER
@@ -233,7 +247,7 @@
 
 # Prefix each line of exception output with this format. (string
 # value)
-#logging_exception_prefix = %(asctime)s.%(msecs)03d %(process)d TRACE %(name)s %(instance)s
+#logging_exception_prefix = %(asctime)s.%(msecs)03d %(process)d ERROR %(name)s %(instance)s
 
 # List of logger=LEVEL pairs. (list value)
 #default_log_levels = amqp=WARN,amqplib=WARN,boto=WARN,qpid=WARN,sqlalchemy=WARN,suds=INFO,oslo.messaging=INFO,iso8601=WARN,requests.packages.urllib3.connectionpool=WARN,urllib3.connectionpool=WARN,websocket=WARN,requests.packages.urllib3.util.retry=WARN,urllib3.util.retry=WARN,keystonemiddleware=WARN,routes.middleware=WARN,stevedore=WARN
@@ -251,6 +265,9 @@
 # The format for an instance UUID that is passed with the log message.
 # (string value)
 #instance_uuid_format = "[instance: %(uuid)s] "
+
+# Enables or disables fatal status of deprecations. (boolean value)
+#fatal_deprecations = false
 
 
 [database]
@@ -407,4 +424,6 @@
 # policy_file must exist for these directories to be searched.
 # Missing or empty directories are ignored. (multi valued)
 # Deprecated group/name - [DEFAULT]/policy_dirs
+# This option is deprecated for removal.
+# Its value may be silently ignored in the future.
 #policy_dirs = policy.d
