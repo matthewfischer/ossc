@@ -88,6 +88,7 @@
 
 # Default notification level for outgoing notifications
 # (string value)
+# Allowed values: DEBUG, INFO, WARN, ERROR, CRITICAL
 #default_notification_level=INFO
 
 # Default publisher_id for outgoing notifications (string
@@ -409,7 +410,8 @@
 #ec2_port=8773
 
 # The protocol to use when connecting to the EC2 API server
-# (http, https) (string value)
+# (string value)
+# Allowed values: http, https
 #ec2_scheme=http
 
 # The path prefix used to call the ec2 API server (string
@@ -766,9 +768,9 @@
 # seconds. (integer value)
 #update_resources_interval=0
 
-# Action to take if a running deleted instance is detected.
-# Valid options are 'noop', 'log', 'shutdown', or 'reap'. Set
+# Action to take if a running deleted instance is detected.Set
 # to 'noop' to take no action. (string value)
+# Allowed values: noop, log, shutdown, reap
 #running_deleted_instance_action=reap
 
 # Number of seconds to wait between runs of the cleanup task.
@@ -1533,8 +1535,8 @@
 # Options defined in nova.virt.configdrive
 #
 
-# Config drive format. One of iso9660 (default) or vfat
-# (string value)
+# Config drive format. (string value)
+# Allowed values: iso9660, vfat
 #config_drive_format=iso9660
 
 # Set to "always" to force injection to take place on a config
@@ -1589,6 +1591,7 @@
 # VM image preallocation mode: "none" => no storage
 # provisioning is done up front, "space" => storage is fully
 # allocated at instance start (string value)
+# Allowed values: none, space
 #preallocate_images=none
 
 # Whether to use cow images (boolean value)
@@ -1766,15 +1769,6 @@
 #policy_dirs=policy.d
 
 
-#
-# Options defined in nova.openstack.common.versionutils
-#
-
-# Enables or disables fatal status of deprecations. (boolean
-# value)
-#fatal_deprecations=false
-
-
 [api_database]
 
 #
@@ -1907,7 +1901,8 @@
 # memory and disk utilization (floating point value)
 #reserve_percent=10.0
 
-# Type of cell: api or compute (string value)
+# Type of cell (string value)
+# Allowed values: api, compute
 #cell_type=compute
 
 # Number of seconds after which a lack of capability and
@@ -1973,12 +1968,6 @@
 # Multiplier used to weigh mute children. (The value should be
 # negative.) (floating point value)
 #mute_weight_multiplier=-10000.0
-
-# DEPRECATED: this option has no effect anymore. Please use
-# "mute_weight_multiplier" instead. This option is deprecated
-# in the 2015.1 release and will be removed in the 2015.2
-# release. (floating point value)
-#mute_weight_value=<None>
 
 
 #
@@ -2098,6 +2087,7 @@
 
 # Default protocol to use when connecting to glance. Set to
 # https for SSL. (string value)
+# Allowed values: http, https
 #protocol=http
 
 # A list of the glance api servers available to nova. Prefix
@@ -2254,7 +2244,8 @@
 # Ironic keystone admin password. (string value)
 #admin_password=<None>
 
-# Ironic keystone auth token. (string value)
+# Ironic keystone auth token.DEPRECATED: use admin_username,
+# admin_password, and admin_tenant_name instead (string value)
 #admin_auth_token=<None>
 
 # Keystone public API endpoint. (string value)
@@ -2456,8 +2447,8 @@
 # Rescue ari image (string value)
 #rescue_ramdisk_id=<None>
 
-# Libvirt domain type (valid options are: kvm, lxc, qemu, uml,
-# xen and parallels) (string value)
+# Libvirt domain type (string value)
+# Allowed values: kvm, lxc, qemu, uml, xen, parallels
 #virt_type=kvm
 
 # Override the default libvirt URI (which is dependent on
@@ -2494,8 +2485,8 @@
 # (integer value)
 #live_migration_bandwidth=0
 
-# Snapshot image format (valid options are : raw, qcow2, vmdk,
-# vdi). Defaults to same as source image (string value)
+# Snapshot image format. Defaults to same as source image
+# (string value)
 #snapshot_image_format=<None>
 
 # Override the default disk prefix for the devices attached to
@@ -2548,8 +2539,8 @@
 #hw_machine_type=<None>
 
 # The data source used to the populate the host "serial" UUID
-# exposed to guest in the virtual BIOS. Permitted options are
-# "hardware", "os", "none" or "auto" (default). (string value)
+# exposed to guest in the virtual BIOS. (string value)
+# Allowed values: none, os, hardware, auto
 #sysinfo_serial=auto
 
 # A number of seconds to memory usage statistics period. Zero
@@ -2570,9 +2561,10 @@
 # Options defined in nova.virt.libvirt.imagebackend
 #
 
-# VM Images format. Acceptable values are: raw, qcow2, lvm,
-# rbd, default. If default is specified, then use_cow_images
-# flag is used instead of this one. (string value)
+# VM Images format. If default is specified, then
+# use_cow_images flag is used instead of this one. (string
+# value)
+# Allowed values: raw, qcow2, lvm, rbd, ploop, default
 #images_type=default
 
 # LVM Volume Group that is used for VM images, when you
@@ -2590,9 +2582,8 @@
 # Path to the ceph configuration file to use (string value)
 #images_rbd_ceph_conf=
 
-# Discard option for nova managed disks (valid options are:
-# ignore, unmap). Need Libvirt(1.0.6) Qemu1.5 (raw format)
-# Qemu1.6(qcow2 format) (string value)
+# Discard option for nova managed disks. Need Libvirt(1.0.6)
+# Qemu1.5 (raw format) Qemu1.6(qcow2 format) (string value)
 #hw_disk_discard=<None>
 
 
@@ -2604,11 +2595,12 @@
 # locations (string value)
 #image_info_filename_pattern=$instances_path/$image_cache_subdirectory_name/%(image)s.info
 
-# Should unused kernel images be removed? This is only safe to
-# enable if all compute nodes have been updated to support
-# this option. This will be enabled by default in future.
-# (boolean value)
-#remove_unused_kernels=false
+# DEPRECATED: Should unused kernel images be removed? This is
+# only safe to enable if all compute nodes have been updated
+# to support this option (running Grizzly or newer level
+# compute). This will be the default behavior in the 13.0.0
+# release. (boolean value)
+#remove_unused_kernels=true
 
 # Unused resized base images younger than this will not be
 # removed (integer value)
@@ -2625,8 +2617,8 @@
 # Options defined in nova.virt.libvirt.lvm
 #
 
-# Method used to wipe old volumes (valid options are: none,
-# zero, shred) (string value)
+# Method used to wipe old volumes. (string value)
+# Allowed values: none, zero, shred
 #volume_clear=zero
 
 # Size in MiB to wipe at start of old volumes. 0 => all
@@ -2722,10 +2714,9 @@
 #quobyte_client_cfg=<None>
 
 # The iSCSI transport iface to use to connect to target in
-# case offload support is desired. Supported transports are
-# be2iscsi, bnx2i, cxgb3i, cxgb4i, qla4xxx and ocs. Default
-# format is transport_name.hwaddress and can be generated
-# manually or via iscsiadm -m iface (string value)
+# case offload support is desired. Default format is
+# transport_name.hwaddress and can be generated manually or
+# via iscsiadm -m iface (string value)
 # Deprecated group/name - [DEFAULT]/iscsi_transport
 #iscsi_iface=<None>
 
@@ -2834,14 +2825,6 @@
 # Number of seconds before querying neutron for extensions
 # (integer value)
 #extension_sync_interval=600
-
-# DEPRECATED: Allow an instance to have multiple vNICs
-# attached to the same Neutron network. This option is
-# deprecated in the 2015.1 release and will be removed in the
-# 2015.2 release where the default behavior will be to always
-# allow multiple ports from the same network to be attached to
-# an instance. (boolean value)
-#allow_duplicate_networks=false
 
 
 [osapi_v3]
@@ -3046,9 +3029,11 @@
 #
 
 # Set a version cap for messages sent to compute services. If
-# you plan to do a live upgrade from havana to icehouse, you
-# should set this option to "icehouse-compat" before beginning
-# the live upgrade procedure. (string value)
+# you plan to do a live upgrade from an old version to a newer
+# version, you should set this option to the old version
+# before beginning the live upgrade procedure. Only upgrading
+# to the next version is supported, so you cannot skip a
+# release for the live upgrade procedure. (string value)
 #compute=<None>
 
 
@@ -3117,18 +3102,30 @@
 # then this policy will be used. (string value)
 #pbm_default_policy=<None>
 
-# Hostname or IP address for connection to VMware VC host.
-# (string value)
+# Hostname or IP address for connection to VMware vCenter
+# host. (string value)
 #host_ip=<None>
 
-# Port for connection to VMware VC host. (integer value)
+# Port for connection to VMware vCenter host. (integer value)
 #host_port=443
 
-# Username for connection to VMware VC host. (string value)
+# Username for connection to VMware vCenter host. (string
+# value)
 #host_username=<None>
 
-# Password for connection to VMware VC host. (string value)
+# Password for connection to VMware vCenter host. (string
+# value)
 #host_password=<None>
+
+# Specify a CA bundle file to use in verifying the vCenter
+# server certificate. (string value)
+#ca_file=<None>
+
+# If true, the vCenter server certificate is not verified. If
+# false, then the default CA truststore is used for
+# verification. This option is ignored if "ca_file" is set.
+# (boolean value)
+#insecure=false
 
 # Name of a VMware Cluster ComputeResource. (multi valued)
 #cluster_name=<None>
@@ -3199,7 +3196,7 @@
 # Options defined in nova.virt.vmwareapi.vmops
 #
 
-# The prefix for Where cached images are stored. This is NOT
+# The prefix for where cached images are stored. This is NOT
 # the full path - just a folder prefix. This should only be
 # used when a datastore cache should be shared between compute
 # nodes. Note: this should only be used when the compute nodes
@@ -3218,9 +3215,9 @@
 # https://bugs.launchpad.net/nova/+bug/1415106 (boolean value)
 #disable_rootwrap=false
 
-# When using libvirt 1.2.2 fails live snapshots intermittently
-# under load.  This config option provides mechanism to
-# disable livesnapshot while this is resolved.  See
+# When using libvirt 1.2.2 live snapshots fail intermittently
+# under load.  This config option provides a mechanism to
+# enable live snapshot while this is resolved.  See
 # https://bugs.launchpad.net/nova/+bug/1334398 (boolean value)
 #disable_libvirt_livesnapshot=true
 
@@ -3229,6 +3226,25 @@
 # if undesired. See https://launchpad.net/bugs/1419785
 # (boolean value)
 #destroy_after_evacuate=true
+
+# Whether or not to handle events raised from the compute
+# driver's 'emit_event' method. These are lifecycle events
+# raised from compute drivers that implement the method. An
+# example of a lifecycle event is an instance starting or
+# stopping. If the instance is going through task state
+# changes due to an API operation, like resize, the events are
+# ignored. However, this is an advanced feature which allows
+# the hypervisor to signal to the compute service that an
+# unexpected state change has occurred in an instance and the
+# instance can be shutdown automatically - which can
+# inherently race in reboot operations or when the compute
+# service or host is rebooted, either planned or due to an
+# unexpected outage. Care should be taken when using this and
+# sync_power_state_interval is negative since then if any
+# instances are out of sync between the hypervisor and the
+# Nova database they will have to be synchronized manually.
+# See https://bugs.launchpad.net/bugs/1444630 (boolean value)
+#handle_virt_lifecycle_events=true
 
 
 [xenserver]
@@ -3337,7 +3353,8 @@
 # Options defined in nova.virt.xenapi.image.bittorrent
 #
 
-# Base URL for torrent files. (string value)
+# Base URL for torrent files; must contain a slash character
+# (see RFC 1808, step 6) (string value)
 #torrent_base_url=<None>
 
 # Probability that peer will become a seeder. (1.0 = 100%)
@@ -3392,6 +3409,7 @@
 # `some` will only cache images that have the image_property
 # `cache_in_nova=True`, and `none` turns off caching entirely
 # (string value)
+# Allowed values: all, some, none
 #cache_images=all
 
 # Compression level for images, e.g., 9 for gzip -9. Range is
@@ -3430,8 +3448,9 @@
 # once and no retry (integer value)
 #num_vbd_unplug_retries=10
 
-# Whether or not to download images via Bit Torrent
-# (all|some|none). (string value)
+# Whether or not to download images via Bit Torrent. (string
+# value)
+# Allowed values: all, some, none
 #torrent_images=none
 
 # Name of network to use for booting iPXE ISOs (string value)
