@@ -3,7 +3,7 @@
 # packages:
 # git libmysqlclient-dev python-tox libpq-dev python-dev
 # libxml2-dev libxslt-dev libffi-dev python-libvirt pkg-config
-# libvirt-dev python-tox
+# libvirt-dev python-tox libpq-dev
 
 GEN_SERVICES="nova cinder glance ceilometer heat"
 PREBUILT_SERVICES="keystone designate neutron"
