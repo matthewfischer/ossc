@@ -1669,33 +1669,6 @@
 
 
 #
-# Options defined in nova.vnc
-#
-
-# Location of VNC console proxy, in the form
-# "http://127.0.0.1:6080/vnc_auto.html" (string value)
-#novncproxy_base_url=http://127.0.0.1:6080/vnc_auto.html
-
-# Location of nova xvp VNC console proxy, in the form
-# "http://127.0.0.1:6081/console" (string value)
-#xvpvncproxy_base_url=http://127.0.0.1:6081/console
-
-# IP address on which instance vncservers should listen
-# (string value)
-#vncserver_listen=127.0.0.1
-
-# The address to which proxy clients (like nova-xvpvncproxy)
-# should connect (string value)
-#vncserver_proxyclient_address=127.0.0.1
-
-# Enable VNC related features (boolean value)
-#vnc_enabled=true
-
-# Keymap for VNC (string value)
-#vnc_keymap=en-us
-
-
-#
 # Options defined in nova.vnc.xvp_proxy
 #
 
@@ -3202,6 +3175,41 @@
 # nodes. Note: this should only be used when the compute nodes
 # have a shared file system. (string value)
 #cache_prefix=<None>
+
+
+[vnc]
+
+#
+# Options defined in nova.vnc
+#
+
+# Location of VNC console proxy, in the form
+# "http://127.0.0.1:6080/vnc_auto.html" (string value)
+# Deprecated group/name - [DEFAULT]/novncproxy_base_url
+#novncproxy_base_url=http://127.0.0.1:6080/vnc_auto.html
+
+# Location of nova xvp VNC console proxy, in the form
+# "http://127.0.0.1:6081/console" (string value)
+# Deprecated group/name - [DEFAULT]/xvpvncproxy_base_url
+#xvpvncproxy_base_url=http://127.0.0.1:6081/console
+
+# IP address on which instance vncservers should listen
+# (string value)
+# Deprecated group/name - [DEFAULT]/vncserver_listen
+#vncserver_listen=127.0.0.1
+
+# The address to which proxy clients (like nova-xvpvncproxy)
+# should connect (string value)
+# Deprecated group/name - [DEFAULT]/vncserver_proxyclient_address
+#vncserver_proxyclient_address=127.0.0.1
+
+# Enable VNC related features (boolean value)
+# Deprecated group/name - [DEFAULT]/vnc_enabled
+#enabled=true
+
+# Keymap for VNC (string value)
+# Deprecated group/name - [DEFAULT]/vnc_keymap
+#keymap=en-us
 
 
 [workarounds]
