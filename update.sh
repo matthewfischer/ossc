@@ -6,7 +6,7 @@
 # libvirt-dev 
 
 GEN_SERVICES="nova cinder glance ceilometer heat"
-PREBUILT_SERVICES="keystone designate neutron"
+PREBUILT_SERVICES="keystone designate neutron swift"
 BRANCH="master"
 
 set -x
@@ -44,6 +44,8 @@ do
         cp etc/dhcp_agent.ini ~/ossc/samples/
     elif [ "${SERVICE}" == "keystone" ]; then
         cp etc/${SERVICE}*conf.sample ~/ossc/samples/
+    elif [ "${SERVICE}" == "swift" ]; then
+        cp etc/${SERVICE}*.conf-sample ~/ossc/samples/swift
     else
         cp etc/${SERVICE}/${SERVICE}.conf.sample ~/ossc/samples/
     fi
