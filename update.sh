@@ -75,11 +75,6 @@ do
         cp etc/${SERVICE}/${SERVICE}.conf ~/ossc/samples/
     fi
 
-    # heat broken: https://bugs.launchpad.net/heat/+bug/1412571
-    if [ "${SERVICE}" == "heat" ]; then
-        echo "heat is busted"
-    fi
-
     commit ${SERVICE}
 
 done
