@@ -386,6 +386,14 @@
 #control_exchange = openstack
 
 #
+# From oslo.service.periodic_task
+#
+
+# Some periodic tasks can be run in a separate process. Should we run them
+# here? (boolean value)
+#run_external_periodic_tasks = true
+
+#
 # From oslo.service.service
 #
 
@@ -1434,3 +1442,19 @@
 # separately, you can move this section to a different file and add it as
 # another config option. (string value)
 #heat_revision = unknown
+
+
+[ssl]
+
+#
+# From oslo.service.sslutils
+#
+
+# CA certificate file to use to verify connecting clients. (string value)
+#ca_file = <None>
+
+# Certificate file to use when starting the server securely. (string value)
+#cert_file = <None>
+
+# Private key file to use when starting the server securely. (string value)
+#key_file = <None>
