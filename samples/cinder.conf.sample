@@ -1341,23 +1341,6 @@
 
 
 #
-# Options defined in cinder.volume.drivers.hds.iscsi
-#
-
-# Configuration file for HDS iSCSI cinder plugin (string
-# value)
-#hds_hnas_iscsi_config_file=/opt/hds/hnas/cinder_iscsi_conf.xml
-
-
-#
-# Options defined in cinder.volume.drivers.hds.nfs
-#
-
-# Configuration file for HDS NFS cinder plugin (string value)
-#hds_hnas_nfs_config_file=/opt/hds/hnas/cinder_nfs_conf.xml
-
-
-#
 # Options defined in cinder.volume.drivers.hgst
 #
 
@@ -1464,6 +1447,23 @@
 
 # iSCSI authentication password (string value)
 #hitachi_auth_password=HBSD-CHAP-password
+
+
+#
+# Options defined in cinder.volume.drivers.hitachi.hnas_iscsi
+#
+
+# Configuration file for HDS iSCSI cinder plugin (string
+# value)
+#hds_hnas_iscsi_config_file=/opt/hds/hnas/cinder_iscsi_conf.xml
+
+
+#
+# Options defined in cinder.volume.drivers.hitachi.hnas_nfs
+#
+
+# Configuration file for HDS NFS cinder plugin (string value)
+#hds_hnas_nfs_config_file=/opt/hds/hnas/cinder_nfs_conf.xml
 
 
 #
