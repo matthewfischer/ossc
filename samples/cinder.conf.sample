@@ -2321,7 +2321,7 @@
 
 # Create SolidFire accounts with this prefix. Any string can
 # be used here, but the string "hostname" is special and will
-# create a prefix using the cinder node hostsname (previous
+# create a prefix using the cinder node hostname (previous
 # default behavior).  The default is NO prefix. (string value)
 #sf_account_prefix=<None>
 
