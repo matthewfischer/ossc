@@ -3070,6 +3070,31 @@
 # option. (string value)
 #control_exchange = openstack
 
+#
+# From oslo.service.periodic_task
+#
+
+# Some periodic tasks can be run in a separate process. Should we run
+# them here? (boolean value)
+#run_external_periodic_tasks = true
+
+#
+# From oslo.service.service
+#
+
+# Enable eventlet backdoor.  Acceptable values are 0, <port>, and
+# <start>:<end>, where 0 results in listening on a random tcp port
+# number; <port> results in listening on the specified port number
+# (and not enabling backdoor if that port is in use); and
+# <start>:<end> results in listening on the smallest unused port
+# number within the specified range of port numbers.  The chosen port
+# is displayed in the service's log file. (string value)
+#backdoor_port = <None>
+
+# Enables or disables logging values of all registered options when
+# starting a service (at DEBUG level). (boolean value)
+#log_options = true
+
 
 [cors]
 
