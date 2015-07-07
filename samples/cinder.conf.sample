@@ -1476,17 +1476,25 @@
 
 
 #
-# Options defined in cinder.volume.drivers.ibm.flashsystem
+# Options defined in cinder.volume.drivers.ibm.flashsystem_common
 #
 
-# Connection protocol should be FC. (string value)
+# Connection protocol should be FC. (Default is FC.) (string
+# value)
 #flashsystem_connection_protocol=FC
 
-# Connect with multipath (FC only). (boolean value)
-#flashsystem_multipath_enabled=false
-
-# Allows vdisk to multi host mapping. (boolean value)
+# Allows vdisk to multi host mapping. (Default is True)
+# (boolean value)
 #flashsystem_multihostmap_enabled=true
+
+
+#
+# Options defined in cinder.volume.drivers.ibm.flashsystem_fc
+#
+
+# Connect with multipath (FC only).(Default is false.)
+# (boolean value)
+#flashsystem_multipath_enabled=false
 
 
 #
@@ -2479,28 +2487,6 @@
 
 # Path to store VHD backed volumes (string value)
 #windows_iscsi_lun_path=C:\iSCSIVirtualDisks
-
-
-#
-# Options defined in cinder.volume.drivers.xio
-#
-
-# Default storage pool for volumes. (integer value)
-#ise_storage_pool=1
-
-# Raid level for ISE volumes. (integer value)
-#ise_raid=1
-
-# Number of retries (per port) when establishing connection to
-# ISE management port. (integer value)
-#ise_connection_retries=5
-
-# Interval (secs) between retries. (integer value)
-#ise_retry_interval=1
-
-# Number on retries to get completion status after issuing a
-# command to ISE. (integer value)
-#ise_completion_retries=30
 
 
 #
