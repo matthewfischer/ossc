@@ -1004,6 +1004,11 @@
 # certificate of the backend endpoint. (boolean value)
 #driver_ssl_cert_verify=false
 
+# List of options that control which trace info is written to
+# the DEBUG log level to assist developers. Valid values are
+# method and api. (list value)
+#trace_flags=<None>
+
 
 #
 # Options defined in cinder.volume.drivers.block_device
