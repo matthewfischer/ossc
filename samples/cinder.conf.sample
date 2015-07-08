@@ -1130,6 +1130,41 @@
 # Enable HTTPS SC certificate verification. (boolean value)
 #dell_sc_verify_cert=false
 
+# Use thin provisioning for SAN volumes? (boolean value)
+#san_thin_provision=true
+
+# IP address of SAN controller (string value)
+#san_ip=
+
+# Username for SAN controller (string value)
+#san_login=admin
+
+# Password for SAN controller (string value)
+#san_password=
+
+# Filename of private key to use for SSH authentication
+# (string value)
+#san_private_key=
+
+# Cluster name to use for creating volumes (string value)
+#san_clustername=
+
+# SSH port to use with SAN (integer value)
+#san_ssh_port=22
+
+# Execute commands locally instead of over SSH; use if the
+# volume service is running on the SAN device (boolean value)
+#san_is_local=false
+
+# SSH connection timeout in seconds (integer value)
+#ssh_conn_timeout=30
+
+# Minimum ssh connections in the pool (integer value)
+#ssh_min_pool_conn=1
+
+# Maximum ssh connections in the pool (integer value)
+#ssh_max_pool_conn=5
+
 
 #
 # Options defined in cinder.volume.drivers.dothill.dothill_common
