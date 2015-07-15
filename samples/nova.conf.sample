@@ -759,10 +759,15 @@
 #shutdown_timeout = 60
 
 # Monitor classes available to the compute which may be specified more than
-# once. (multi valued)
-#compute_available_monitors = nova.compute.monitors.all_monitors
+# once. This option is DEPRECATED and no longer used. Use setuptools entry
+# points to list available monitor plugins. (multi valued)
+# This option is deprecated for removal.
+# Its value may be silently ignored in the future.
+#compute_available_monitors =
 
-# A list of monitors that can be used for getting compute metrics. (list value)
+# A list of monitors that can be used for getting compute metrics. You can use
+# the alias/name from the setuptools entry points for nova.compute.monitors.*
+# namespaces. (list value)
 #compute_monitors =
 
 # Amount of disk in MB to reserve for the host (integer value)
@@ -2847,7 +2852,7 @@
 # Number of seconds after which the Rabbit broker is considered down if
 # heartbeat's keep-alive fails (0 disable the heartbeat). EXPERIMENTAL (integer
 # value)
-#heartbeat_timeout_threshold = 0
+#heartbeat_timeout_threshold = 60
 
 # How often times during the heartbeat_timeout_threshold we check the
 # heartbeat. (integer value)
@@ -3158,9 +3163,11 @@
 # resolved.  See https://bugs.launchpad.net/nova/+bug/1334398 (boolean value)
 #disable_libvirt_livesnapshot = true
 
-# Whether to destroy instances on startup when we suspect they have previously
-# been evacuated. This can result in data loss if undesired. See
+# DEPRECATED: Whether to destroy instances on startup when we suspect they have
+# previously been evacuated. This can result in data loss if undesired. See
 # https://launchpad.net/bugs/1419785 (boolean value)
+# This option is deprecated for removal.
+# Its value may be silently ignored in the future.
 #destroy_after_evacuate = true
 
 # Whether or not to handle events raised from the compute driver's 'emit_event'
